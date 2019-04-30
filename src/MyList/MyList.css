@@ -11,8 +11,6 @@
   flex: 1;
   background: #f3e4e7;
 
-  /* border: 1px solid var(--color-blue) !important; */
-  /* border: 1px solid red !important; */
   height: 50%;
 }
 
@@ -26,14 +24,12 @@
   max-height: 56px;
 
   background: #e6c9e6;
-  /* border: 1px solid blue !important; */
 }
 
 .body {
   display: flex;
   width: 100%;
 
-  /* border: 1px solid orange !important; */
   padding: 24px;
 }
 
@@ -62,7 +58,6 @@
 
   margin: 24px;
   height: 80vh;
-  /* border: 1px solid green !important; */
 }
 
 .sentence {
@@ -72,7 +67,6 @@
 }
 
 .word-tools-container {
-  /* border: 1px solid green !important; */
   display: flex;
 }
 
@@ -80,15 +74,17 @@
   display: inline-flex;
   height: 40px;
   align-items: center;
-  /* border: 1px solid red !important; */
 }
 
 .index {
-  /* border: 1px solid green !important; */
 }
 
 .word {
-  position: absolute;
-  margin-left: 40px;
+  /* position: absolute; */
+  margin-left: 24px;
   font-size: 24px;
+}
+
+.favorite-button {
+  margin-left: 24px;
 }

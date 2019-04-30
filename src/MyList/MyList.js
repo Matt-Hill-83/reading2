@@ -1,6 +1,6 @@
 import React from "react";
-
-import { Tab, Tabs } from "@blueprintjs/core";
+import { IconNames } from "@blueprintjs/icons";
+import { Button, Icon, Intent, Tab, Tabs } from "@blueprintjs/core";
 import { SketchPicker } from "react-color";
 
 import "./MyList.css";
@@ -46,6 +46,18 @@ const emotionWords = [
   { name: "surprised", partOfSpeech: "noun", partOfStory: "emotion" }
 ];
 
+const wordsICanRead = [
+  { name: "happy", partOfSpeech: "noun", partOfStory: "emotion" },
+  { name: "sad", partOfSpeech: "noun", partOfStory: "emotion" },
+  { name: "mad", partOfSpeech: "noun", partOfStory: "emotion" },
+  { name: "scared", partOfSpeech: "noun", partOfStory: "emotion" },
+  { name: "glad", partOfSpeech: "noun", partOfStory: "emotion" },
+  { name: "brave", partOfSpeech: "noun", partOfStory: "emotion" },
+  { name: "silly", partOfSpeech: "noun", partOfStory: "emotion" },
+  { name: "angry", partOfSpeech: "noun", partOfStory: "emotion" },
+  { name: "surprised", partOfSpeech: "noun", partOfStory: "emotion" }
+];
+
 const locationWords = [
   { name: "store", partOfSpeech: "noun", partOfStory: "location" },
   { name: "forest", partOfSpeech: "noun", partOfStory: "location" },
@@ -57,8 +69,9 @@ const locationWords = [
 
 const mySentences = [
   "Bingo Bongo is a bear.",
-  "Bingo Bongo the bear walks to the store.",
-  "Bun Bun the bunny hops to the store.",
+  "Bingo Bongo walks to the store.",
+  "Bun Bun is a bunny.",
+  "Bun Bun hops to the store.",
   "Bun Bun is fast.",
   "Bingo Bongo is not slow.",
   "Bingo Bongo is medium.",
@@ -73,11 +86,17 @@ const mySentences = [
 export default class MyList extends React.Component {
   state = { activeTab: "a" };
 
-  handleTabChange = newTab => {
-    console.log("newTab", newTab); // zzz
+  async componentDidMount() {
+    const words = [
+      ...animalWords,
+      ...actionWords,
+      ...nameWords,
+      ...emotionWords,
+      ...locationWords
+    ];
 
-    this.setState({ activeTab: newTab });
-  };
+    this.setState({ words });
+  }
 
   renderSentences = () => {
     const sentences = mySentences.map((sentence, i) => {
@@ -88,13 +107,27 @@ export default class MyList extends React.Component {
     return sentences;
   };
 
+  favoriteWord = ({ word }) => {
+    word.isFavorite = !word.isFavorite;
+    console.log("word", word); // zzz
+    const words = this.state.words;
+    this.setState({ words });
+  };
+
   renderFlashCards = ({ words }) => {
     const renderedFlashCards = words.map((word, i) => {
       return (
         <div key={i} className="word-tools-container">
+          <Button
+            className="favorite-button"
+            onClick={() => this.favoriteWord({ word })}
+          >
+            <Icon icon={IconNames.STAR} />
+          </Button>
           <div className="word-container">
-            <span className="index">{`${i + 1}.`}</span>
+            {/* <span className="index">{`${i + 1}.`}</span> */}
             <span className="word">{` ${word.name}`}</span>
+            <span className="word">{` ${word.isFavorite}`}</span>
           </div>
         </div>
       );
@@ -106,21 +139,19 @@ export default class MyList extends React.Component {
   render() {
     console.log("render");
 
-    const words = [
-      ...animalWords,
-      ...actionWords,
-      ...nameWords,
-      ...emotionWords,
-      ...locationWords
-    ];
-
     const panels = {
       animals: { name: "animals", content: animalWords },
       places: { name: "places", content: locationWords },
-      feelings: { name: "feelings", content: emotionWords }
+      feelings: { name: "feelings", content: emotionWords },
+      wordsICanRead: { name: "Words I Can Read", content: wordsICanRead }
     };
 
-    const selectedPanels = [panels.animals, panels.places, panels.feelings];
+    const selectedPanels = [
+      panels.animals,
+      panels.places,
+      panels.feelings,
+      panels.wordsICanRead
+    ];
 
     const renderedPanels = selectedPanels.map(panel => {
       return (
@@ -139,13 +170,12 @@ export default class MyList extends React.Component {
           <div className="left">
             <span className="header">Flash Cards</span>
 
-            {/* <audio controls>
-              <source src="./horse.ogg" type="audio/ogg" />
-              <source src="./horse.mp3" type="audio/mpeg" />
-              Your browser does not support the audio element.
-            </audio> */}
-
             <Tabs id="TabsExample">{renderedPanels}</Tabs>
+          </div>
+          <div className="left">
+            <span className="header">Words I Can Read</span>
+
+            {this.renderFlashCards({ words: wordsICanRead })}
           </div>
 
           <div className="right">

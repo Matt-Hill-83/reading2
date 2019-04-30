@@ -1,0 +1,2 @@
+install mobx
+color icons
