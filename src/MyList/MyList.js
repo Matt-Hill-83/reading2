@@ -56,6 +56,7 @@ const locationWords = [
 ];
 
 const mySentences = [
+  "Bingo Bongo is a bear.",
   "Bingo Bongo the bear walks to the store.",
   "Bun Bun the bunny hops to the store.",
   "Bun Bun is fast.",
@@ -83,9 +84,8 @@ export default class MyList extends React.Component {
       return (
         <span key={i} className="sentence">{`${i + 1}. ${sentence}`}</span>
       );
-
-      return sentences;
     });
+    return sentences;
   };
 
   renderFlashCards = ({ words }) => {
