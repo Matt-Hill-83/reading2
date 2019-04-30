@@ -1,71 +1,10 @@
 import React from "react";
 import { IconNames } from "@blueprintjs/icons";
-import { Button, Icon, Intent, Tab, Tabs } from "@blueprintjs/core";
+import { Button, Icon, Tab, Tabs } from "@blueprintjs/core";
 import { SketchPicker } from "react-color";
 
 import "./MyList.css";
-
-const animalWords = [
-  { name: "cat", partOfSpeech: "noun", partOfStory: "animal" },
-  { name: "rat", partOfSpeech: "noun", partOfStory: "animal" },
-  { name: "bat", partOfSpeech: "noun", partOfStory: "animal" },
-  { name: "dog", partOfSpeech: "noun", partOfStory: "animal" },
-  { name: "pig", partOfSpeech: "noun", partOfStory: "animal" },
-  { name: "cow", partOfSpeech: "noun", partOfStory: "animal" },
-  { name: "bee", partOfSpeech: "noun", partOfStory: "animal" },
-  { name: "frog", partOfSpeech: "noun", partOfStory: "animal" },
-  { name: "crab", partOfSpeech: "noun", partOfStory: "animal" },
-  { name: "fish", partOfSpeech: "noun", partOfStory: "animal" },
-  { name: "bear", partOfSpeech: "noun", partOfStory: "animal" },
-  { name: "deer", partOfSpeech: "noun", partOfStory: "animal" },
-  { name: "bird", partOfSpeech: "noun", partOfStory: "animal" },
-  { name: "alligator", partOfSpeech: "noun", partOfStory: "animal" },
-  { name: "crow", partOfSpeech: "noun", partOfStory: "animal" },
-  { name: "snake", partOfSpeech: "noun", partOfStory: "animal" },
-  { name: "turtle", partOfSpeech: "noun", partOfStory: "animal" },
-  { name: "bunny", partOfSpeech: "noun", partOfStory: "animal" }
-];
-
-const actionWords = [
-  { name: "runs", partOfSpeech: "noun", partOfStory: "animal" }
-];
-
-const nameWords = [
-  { name: "Bingo Bongo", partOfSpeech: "noun", partOfStory: "name" }
-];
-
-const emotionWords = [
-  { name: "happy", partOfSpeech: "noun", partOfStory: "emotion" },
-  { name: "sad", partOfSpeech: "noun", partOfStory: "emotion" },
-  { name: "mad", partOfSpeech: "noun", partOfStory: "emotion" },
-  { name: "scared", partOfSpeech: "noun", partOfStory: "emotion" },
-  { name: "glad", partOfSpeech: "noun", partOfStory: "emotion" },
-  { name: "brave", partOfSpeech: "noun", partOfStory: "emotion" },
-  { name: "silly", partOfSpeech: "noun", partOfStory: "emotion" },
-  { name: "angry", partOfSpeech: "noun", partOfStory: "emotion" },
-  { name: "surprised", partOfSpeech: "noun", partOfStory: "emotion" }
-];
-
-const wordsICanRead = [
-  { name: "happy", partOfSpeech: "noun", partOfStory: "emotion" },
-  { name: "sad", partOfSpeech: "noun", partOfStory: "emotion" },
-  { name: "mad", partOfSpeech: "noun", partOfStory: "emotion" },
-  { name: "scared", partOfSpeech: "noun", partOfStory: "emotion" },
-  { name: "glad", partOfSpeech: "noun", partOfStory: "emotion" },
-  { name: "brave", partOfSpeech: "noun", partOfStory: "emotion" },
-  { name: "silly", partOfSpeech: "noun", partOfStory: "emotion" },
-  { name: "angry", partOfSpeech: "noun", partOfStory: "emotion" },
-  { name: "surprised", partOfSpeech: "noun", partOfStory: "emotion" }
-];
-
-const locationWords = [
-  { name: "store", partOfSpeech: "noun", partOfStory: "location" },
-  { name: "forest", partOfSpeech: "noun", partOfStory: "location" },
-  { name: "lake", partOfSpeech: "noun", partOfStory: "location" },
-  { name: "beach", partOfSpeech: "noun", partOfStory: "location" },
-  { name: "park", partOfSpeech: "noun", partOfStory: "location" },
-  { name: "playground", partOfSpeech: "noun", partOfStory: "location" }
-];
+import myWords from "./words.js";
 
 const mySentences = [
   "Bingo Bongo is a bear.",
@@ -87,15 +26,7 @@ export default class MyList extends React.Component {
   state = { activeTab: "a", favoriteWords: [] };
 
   async componentDidMount() {
-    const words = [
-      ...animalWords,
-      ...actionWords,
-      ...nameWords,
-      ...emotionWords,
-      ...locationWords
-    ];
-
-    this.setState({ words });
+    this.setState({ words: myWords.words });
   }
 
   renderSentences = () => {
@@ -109,7 +40,6 @@ export default class MyList extends React.Component {
 
   favoriteWord = ({ word }) => {
     word.isFavorite = !word.isFavorite;
-    console.log("word", word); // zzz
     const words = this.state.words;
 
     const favoriteWords = words.filter(word => word.isFavorite);
@@ -129,9 +59,7 @@ export default class MyList extends React.Component {
             <Icon color={iconColor} icon={IconNames.STAR} />
           </Button>
           <div className="word-container">
-            {/* <span className="index">{`${i + 1}.`}</span> */}
             <span className="word">{` ${word.name}`}</span>
-            {/* <span className="word">{` ${word.isFavorite}`}</span> */}
           </div>
         </div>
       );
@@ -146,24 +74,21 @@ export default class MyList extends React.Component {
     console.log("render");
 
     const panels = {
-      animals: { name: "animals", content: this.removeFavorites(animalWords) },
-      places: { name: "places", content: this.removeFavorites(locationWords) },
+      animals: {
+        name: "animals",
+        content: this.removeFavorites(myWords.animalWords)
+      },
+      places: {
+        name: "places",
+        content: this.removeFavorites(myWords.locationWords)
+      },
       feelings: {
         name: "feelings",
-        content: this.removeFavorites(emotionWords)
-      },
-      wordsICanRead: {
-        name: "Words I Can Read",
-        content: this.removeFavorites(wordsICanRead)
+        content: this.removeFavorites(myWords.emotionWords)
       }
     };
 
-    const selectedPanels = [
-      panels.animals,
-      panels.places,
-      panels.feelings,
-      panels.wordsICanRead
-    ];
+    const selectedPanels = [panels.animals, panels.places, panels.feelings];
 
     const renderedPanels = selectedPanels.map(panel => {
       return (

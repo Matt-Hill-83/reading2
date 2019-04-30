@@ -1,2 +1,15 @@
+
+
+TODO
+----------------
 install mobx
+add sass
+add db
+
+
+
+
+
+DONE
+-------------
 color icons
