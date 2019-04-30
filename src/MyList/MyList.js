@@ -84,7 +84,7 @@ const mySentences = [
 ];
 
 export default class MyList extends React.Component {
-  state = { activeTab: "a" };
+  state = { activeTab: "a", favoriteWords: [] };
 
   async componentDidMount() {
     const words = [
@@ -111,23 +111,27 @@ export default class MyList extends React.Component {
     word.isFavorite = !word.isFavorite;
     console.log("word", word); // zzz
     const words = this.state.words;
-    this.setState({ words });
+
+    const favoriteWords = words.filter(word => word.isFavorite);
+
+    this.setState({ words, favoriteWords });
   };
 
   renderFlashCards = ({ words }) => {
     const renderedFlashCards = words.map((word, i) => {
+      const iconColor = word.isFavorite ? "purple" : "pink";
       return (
         <div key={i} className="word-tools-container">
           <Button
             className="favorite-button"
             onClick={() => this.favoriteWord({ word })}
           >
-            <Icon icon={IconNames.STAR} />
+            <Icon color={iconColor} icon={IconNames.STAR} />
           </Button>
           <div className="word-container">
             {/* <span className="index">{`${i + 1}.`}</span> */}
             <span className="word">{` ${word.name}`}</span>
-            <span className="word">{` ${word.isFavorite}`}</span>
+            {/* <span className="word">{` ${word.isFavorite}`}</span> */}
           </div>
         </div>
       );
@@ -136,14 +140,22 @@ export default class MyList extends React.Component {
     return renderedFlashCards;
   };
 
+  removeFavorites = words => words.filter(word => !word.isFavorite);
+
   render() {
     console.log("render");
 
     const panels = {
-      animals: { name: "animals", content: animalWords },
-      places: { name: "places", content: locationWords },
-      feelings: { name: "feelings", content: emotionWords },
-      wordsICanRead: { name: "Words I Can Read", content: wordsICanRead }
+      animals: { name: "animals", content: this.removeFavorites(animalWords) },
+      places: { name: "places", content: this.removeFavorites(locationWords) },
+      feelings: {
+        name: "feelings",
+        content: this.removeFavorites(emotionWords)
+      },
+      wordsICanRead: {
+        name: "Words I Can Read",
+        content: this.removeFavorites(wordsICanRead)
+      }
     };
 
     const selectedPanels = [
@@ -175,7 +187,7 @@ export default class MyList extends React.Component {
           <div className="left">
             <span className="header">Words I Can Read</span>
 
-            {this.renderFlashCards({ words: wordsICanRead })}
+            {this.renderFlashCards({ words: this.state.favoriteWords })}
           </div>
 
           <div className="right">
