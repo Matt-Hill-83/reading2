@@ -70,29 +70,44 @@ export default class MyList extends React.Component {
 
   removeFavorites = words => words.filter(word => !word.isFavorite);
 
+  getWordsByType = ({ words, type }) => {
+    return words.filter(word => word.type === type);
+  };
+
   render() {
     console.log("render");
+    console.log(
+      'this.getWordsByType({ words: myWords.words, type: "animals" })',
+      this.getWordsByType({ words: myWords.words, type: "animals" })
+    ); // zzz
 
     const panels = {
       animals: {
         name: "animals",
-        content: this.removeFavorites(myWords.animalWords)
+        content: this.removeFavorites(
+          this.getWordsByType({ words: myWords.words, type: "animals" })
+        )
       },
       places: {
         name: "places",
-        content: this.removeFavorites(myWords.locationWords)
+        content: this.removeFavorites(
+          this.getWordsByType({ words: myWords.words, type: "locations" })
+        )
       },
       feelings: {
         name: "feelings",
-        content: this.removeFavorites(myWords.emotionWords)
+        content: this.removeFavorites(
+          this.getWordsByType({ words: myWords.words, type: "emotions" })
+        )
       }
     };
 
     const selectedPanels = [panels.animals, panels.places, panels.feelings];
 
-    const renderedPanels = selectedPanels.map(panel => {
+    const renderedPanels = selectedPanels.map((panel, i) => {
       return (
         <Tab
+          key={i}
           id={panel.name}
           title={panel.name}
           panel={this.renderFlashCards({ words: panel.content })}
@@ -116,7 +131,7 @@ export default class MyList extends React.Component {
           </div>
 
           <div className="right">
-            <SketchPicker />
+            {/* <SketchPicker /> */}
             <span className="header">Story</span>
             <div className="story">{this.renderSentences()}</div>
           </div>
