@@ -1,11 +1,11 @@
 const wordTypes = {
-  animal: "animals",
-  name: "names",
-  emotion: "emotions",
-  location: "locations",
+  animal: "animal",
+  name: "name",
+  emotion: "emotion",
+  location: "location",
   clothes: "clothes",
-  food: "foods",
-  vehicle: "vehicles"
+  food: "food",
+  vehicle: "vehicle"
 };
 
 const animals = [
@@ -35,7 +35,11 @@ const actions = [
 ];
 
 const names = [
-  { name: "Bingo Bongo", partOfSpeech: "noun", type: wordTypes.name }
+  { name: "Bingo Bongo", partOfSpeech: "noun", type: wordTypes.name },
+  { name: "Bun Bun", partOfSpeech: "noun", type: wordTypes.name },
+  { name: "Charlie", partOfSpeech: "noun", type: wordTypes.name },
+  { name: "Bob", partOfSpeech: "noun", type: wordTypes.name },
+  { name: "Matt", partOfSpeech: "noun", type: wordTypes.name }
 ];
 
 const emotions = [
@@ -62,9 +66,9 @@ const locations = [
 
 const clothes = [
   { name: "hat", partOfSpeech: "noun", type: wordTypes.clothes },
-  { name: "gloves", partOfSpeech: "noun", type: wordTypes.clothes },
   { name: "bow", partOfSpeech: "noun", type: wordTypes.clothes },
   { name: "pants", partOfSpeech: "noun", type: wordTypes.clothes },
+  { name: "gloves", partOfSpeech: "noun", type: wordTypes.clothes },
   { name: "shirt", partOfSpeech: "noun", type: wordTypes.clothes }
 ];
 
@@ -84,6 +88,7 @@ const vehicles = [
   { name: "scooter", partOfSpeech: "noun", type: wordTypes.vehicle },
   { name: "boat", partOfSpeech: "noun", type: wordTypes.vehicle },
   { name: "plane", partOfSpeech: "noun", type: wordTypes.vehicle },
+  { name: "train", partOfSpeech: "noun", type: wordTypes.vehicle },
   { name: "helicopter", partOfSpeech: "noun", type: wordTypes.vehicle }
 ];
 
@@ -99,5 +104,6 @@ const words = [
 ];
 
 export default {
-  words
+  words,
+  wordTypes
 };

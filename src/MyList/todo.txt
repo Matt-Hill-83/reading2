@@ -5,6 +5,12 @@ TODO
 install mobx
 add sass
 add db
+write to file, or to local storage?
+random unicorns
+animations on click
+word picker
+conversations
+
 
 
 

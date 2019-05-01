@@ -23,7 +23,7 @@ const mySentences = [
 ];
 
 export default class MyList extends React.Component {
-  state = { activeTab: "a", favoriteWords: [] };
+  state = { activeTab: myWords.wordTypes["name"], favoriteWords: [] };
 
   async componentDidMount() {
     this.setState({ words: myWords.words });
@@ -77,46 +77,25 @@ export default class MyList extends React.Component {
     words.filter(word => word.isFavorite === true);
 
   render() {
-    console.log("render");
-
-    const panels = {
-      animals: {
-        name: "animals",
-        content: this.removeFavorites(
-          this.getWordsByType({ words: myWords.words, type: "animals" })
-        )
-      },
-      places: {
-        name: "places",
-        content: this.removeFavorites(
-          this.getWordsByType({ words: myWords.words, type: "locations" })
-        )
-      },
-      feelings: {
-        name: "feelings",
-        content: this.removeFavorites(
-          this.getWordsByType({ words: myWords.words, type: "emotions" })
-        )
-      }
-    };
-
-    const selectedPanels = [panels.animals, panels.places, panels.feelings];
-
-    const renderedPanels = selectedPanels.map((panel, i) => {
-      return (
-        <Tab
-          key={i}
-          id={panel.name}
-          title={panel.name}
-          panel={this.renderFlashCards({ words: panel.content })}
-        />
-      );
-    });
-
     const words = this.state.words;
     if (!words) {
       return null;
     }
+
+    const renderedPanels = Object.keys(myWords.wordTypes).map((type, i) => {
+      const content = this.removeFavorites(
+        this.getWordsByType({ words, type })
+      );
+
+      return (
+        <Tab
+          key={i}
+          id={type}
+          title={type}
+          panel={this.renderFlashCards({ words: content })}
+        />
+      );
+    });
 
     return (
       <div className="main">
