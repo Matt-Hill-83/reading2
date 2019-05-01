@@ -1,37 +1,26 @@
 import myWords from "./words.js";
 import Utils from "./utils.js";
 
-const sentences = [
-  "Bingo Bongo is a bear.",
-  "Bingo Bongo walks to the store.",
-  "Bun Bun is a bunny.",
-  "Bun Bun hops to the store.",
-  "Bun Bun is fast.",
-  "Bingo Bongo is not slow.",
-  "Bingo Bongo is medium.",
-  "Bingo Bongo is funny.",
-  "The bunny bumps into the bear.",
-  "The bunny gets mad at the bear.",
-  "The bear is sad.",
-  "The bear starts to cry.",
-  "The bear starts to sob."
-];
-
 const makeStory = ({ words }) => {
+  // words = Utils.getWordsByFavorite({ words });
   const animals = Utils.getWordsByType({ words, type: "animal" });
-  const names = Utils.getWordsByType({ words, type: "name" });
+  const names = Utils.getWordsByType({ words, type: "name" }).map(
+    name => name.name
+  );
   const places = Utils.getWordsByType({ words, type: "place" });
   const actions = Utils.getWordsByType({ words, type: "action" });
 
+  console.log("names", names); // zzz
+
   const character0 = {
-    name: Utils.getRandomItem({ items: names }).name,
+    name: Utils.getRandomItem({ items: names, num: 2 }),
     animal: animals[0].name,
     action: actions[0].name,
     place: places[0].name
   };
 
   const character1 = {
-    name: names[1].name,
+    name: Utils.getRandomItem({ items: names, num: 2 }),
     animal: animals[1].name,
     action: actions[1].name,
     place: places[1].name
