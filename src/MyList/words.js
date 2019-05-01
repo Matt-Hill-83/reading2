@@ -1,8 +1,8 @@
 const wordTypes = {
   animal: "animal",
   name: "name",
-  emotion: "emotion",
-  location: "location",
+  feeling: "feeling",
+  place: "place",
   clothes: "clothes",
   food: "food",
   vehicle: "vehicle"
@@ -43,25 +43,25 @@ const names = [
 ];
 
 const emotions = [
-  { name: "sad", partOfSpeech: "noun", type: wordTypes.emotion },
-  { name: "mad", partOfSpeech: "noun", type: wordTypes.emotion },
-  { name: "glad", partOfSpeech: "noun", type: wordTypes.emotion },
-  { name: "happy", partOfSpeech: "noun", type: wordTypes.emotion },
-  { name: "silly", partOfSpeech: "noun", type: wordTypes.emotion },
-  { name: "angry", partOfSpeech: "noun", type: wordTypes.emotion },
-  { name: "scared", partOfSpeech: "noun", type: wordTypes.emotion },
-  { name: "brave", partOfSpeech: "noun", type: wordTypes.emotion },
-  { name: "surprised", partOfSpeech: "noun", type: wordTypes.emotion }
+  { name: "sad", partOfSpeech: "noun", type: wordTypes.feeling },
+  { name: "mad", partOfSpeech: "noun", type: wordTypes.feeling },
+  { name: "glad", partOfSpeech: "noun", type: wordTypes.feeling },
+  { name: "happy", partOfSpeech: "noun", type: wordTypes.feeling },
+  { name: "silly", partOfSpeech: "noun", type: wordTypes.feeling },
+  { name: "angry", partOfSpeech: "noun", type: wordTypes.feeling },
+  { name: "scared", partOfSpeech: "noun", type: wordTypes.feeling },
+  { name: "brave", partOfSpeech: "noun", type: wordTypes.feeling },
+  { name: "surprised", partOfSpeech: "noun", type: wordTypes.feeling }
 ];
 
 const locations = [
-  { name: "park", partOfSpeech: "noun", type: wordTypes.location },
-  { name: "lake", partOfSpeech: "noun", type: wordTypes.location },
-  { name: "store", partOfSpeech: "noun", type: wordTypes.location },
-  { name: "school", partOfSpeech: "noun", type: wordTypes.location },
-  { name: "forest", partOfSpeech: "noun", type: wordTypes.location },
-  { name: "beach", partOfSpeech: "noun", type: wordTypes.location },
-  { name: "playground", partOfSpeech: "noun", type: wordTypes.location }
+  { name: "park", partOfSpeech: "noun", type: wordTypes.place },
+  { name: "lake", partOfSpeech: "noun", type: wordTypes.place },
+  { name: "store", partOfSpeech: "noun", type: wordTypes.place },
+  { name: "school", partOfSpeech: "noun", type: wordTypes.place },
+  { name: "forest", partOfSpeech: "noun", type: wordTypes.place },
+  { name: "beach", partOfSpeech: "noun", type: wordTypes.place },
+  { name: "playground", partOfSpeech: "noun", type: wordTypes.place }
 ];
 
 const clothes = [
