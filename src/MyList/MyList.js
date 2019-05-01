@@ -16,7 +16,7 @@ export default class MyList extends React.Component {
   }
 
   renderSentences = () => {
-    const sentences = mySentences.sentences.map((sentence, i) => {
+    const sentences = mySentences.story1.map((sentence, i) => {
       return (
         <span key={i} className="sentence">{`${i + 1}. ${sentence}`}</span>
       );

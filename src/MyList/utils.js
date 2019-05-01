@@ -6,8 +6,12 @@ const getWordsByType = ({ words, type }) =>
 const getWordsByFavorite = ({ words, type }) =>
   words.filter(word => word.isFavorite === true);
 
+const getRandomItem = ({ items }) =>
+  items[Math.floor(Math.random() * items.length)];
+
 export default {
   removeFavorites,
   getWordsByType,
-  getWordsByFavorite
+  getWordsByFavorite,
+  getRandomItem
 };

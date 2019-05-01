@@ -10,7 +10,10 @@ random unicorns
 animations on click
 word picker
 conversations
-
+backdrop images
+character images
+play sounds on click words
+cool fonts for word types
 
 
 

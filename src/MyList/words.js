@@ -5,7 +5,8 @@ const wordTypes = {
   place: "place",
   clothes: "clothes",
   food: "food",
-  vehicle: "vehicle"
+  vehicle: "vehicle",
+  action: "action"
 };
 
 const animals = [
@@ -31,7 +32,8 @@ const animals = [
 ];
 
 const actions = [
-  { name: "runs", partOfSpeech: "noun", type: wordTypes.animal }
+  { name: "runs", partOfSpeech: "noun", type: wordTypes.action },
+  { name: "runs", partOfSpeech: "noun", type: wordTypes.action }
 ];
 
 const names = [
