@@ -15,6 +15,9 @@ character images
 play sounds on click words
 cool fonts for word types
 
+figure out currying or func prog
+words.isSelected.getrandom.get name
+
 
 
 
