@@ -1,7 +1,7 @@
 import React from "react";
 import { IconNames } from "@blueprintjs/icons";
 import { Button, Icon, Tab, Tabs } from "@blueprintjs/core";
-import { SketchPicker } from "react-color";
+// import { SketchPicker } from "react-color";
 
 import "./MyList.css";
 import myWords from "./words.js";
@@ -70,16 +70,14 @@ export default class MyList extends React.Component {
 
   removeFavorites = words => words.filter(word => !word.isFavorite);
 
-  getWordsByType = ({ words, type }) => {
-    return words.filter(word => word.type === type);
-  };
+  getWordsByType = ({ words, type }) =>
+    words.filter(word => word.type === type);
+
+  getWordsByFavorite = ({ words, type }) =>
+    words.filter(word => word.isFavorite === true);
 
   render() {
     console.log("render");
-    console.log(
-      'this.getWordsByType({ words: myWords.words, type: "animals" })',
-      this.getWordsByType({ words: myWords.words, type: "animals" })
-    ); // zzz
 
     const panels = {
       animals: {
@@ -115,6 +113,11 @@ export default class MyList extends React.Component {
       );
     });
 
+    const words = this.state.words;
+    if (!words) {
+      return null;
+    }
+
     return (
       <div className="main">
         <span className="header banner">I Can Read</span>
@@ -127,7 +130,9 @@ export default class MyList extends React.Component {
           <div className="left">
             <span className="header">Words I Can Read</span>
 
-            {this.renderFlashCards({ words: this.state.favoriteWords })}
+            {this.renderFlashCards({
+              words: this.getWordsByFavorite({ words })
+            })}
           </div>
 
           <div className="right">
