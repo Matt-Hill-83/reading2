@@ -75,6 +75,14 @@
   margin: 24px;
   height: 80vh;
 }
+.background-image {
+  display: flex;
+  height: 400px;
+}
+
+.story-box {
+  display: flex;
+}
 
 .sentence {
   height: 30px;

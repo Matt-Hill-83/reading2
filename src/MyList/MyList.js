@@ -143,8 +143,10 @@ export default class MyList extends React.Component {
             <div className="right">
               {/* <SketchPicker /> */}
               <span className="header">Story</span>
-              <div className="story">{this.renderSentences()}</div>
-              <img src={meadow} alt="meadow" />
+              <div className="story-box">
+                <div className="story">{this.renderSentences()}</div>
+                <img className="background-image" src={meadow} alt="meadow" />
+              </div>
             </div>
           )}
         </div>
