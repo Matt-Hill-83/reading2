@@ -4,6 +4,8 @@ import { Button, Icon, Tab, Tabs } from "@blueprintjs/core";
 // import { SketchPicker } from "react-color";
 
 // import { observer } from "mobx-react";
+import meadow from "./meadow.jpg";
+// import meadow from "../images/meadow.jpg";
 
 import Utils from "./utils.js";
 
@@ -15,7 +17,8 @@ import "./MyList.css";
 export default class MyList extends React.Component {
   state = {
     activeTab: myWords.wordTypes["name"],
-    sentences: []
+    sentences: [],
+    showStory: true
   };
 
   async componentDidMount() {
@@ -26,9 +29,7 @@ export default class MyList extends React.Component {
 
   renderSentences = () => {
     const sentences = this.state.sentences.map((sentence, i) => {
-      return (
-        <span key={i} className="word sentence">{`${i + 1}. ${sentence}`}</span>
-      );
+      return <span key={i} className="word sentence">{`${sentence}`}</span>;
     });
     return sentences;
   };
@@ -143,6 +144,7 @@ export default class MyList extends React.Component {
               {/* <SketchPicker /> */}
               <span className="header">Story</span>
               <div className="story">{this.renderSentences()}</div>
+              <img src={meadow} alt="meadow" />
             </div>
           )}
         </div>

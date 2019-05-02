@@ -14,6 +14,10 @@ const makeStory = ({ words }) => {
     words,
     type: myWords.wordTypes.creature
   });
+  const vehicle = getRandomWordByType({
+    words,
+    type: myWords.wordTypes.vehicle
+  });
 
   const place = getRandomWordByType({
     words,
@@ -33,36 +37,31 @@ const makeStory = ({ words }) => {
     place: place
   };
 
-  const character1 = {
-    name: getRandomWordByType({ words, type: myWords.wordTypes.name }),
-    animal: getRandomWordByType({ words, type: myWords.wordTypes.animal }),
-    action: actions[1].name,
-    place: place
-  };
+  // const character1 = {
+  //   name: getRandomWordByType({ words, type: myWords.wordTypes.name }),
+  //   animal: getRandomWordByType({ words, type: myWords.wordTypes.animal }),
+  //   action: actions[1].name,
+  //   place: place
+  // };
 
   const myName = "Pria";
   // const myName = "Charlie";
 
   const story = [
     `Your name is ${myName}.`,
-    `You walk to the ${place}.`,
+    `You go to the ${place} in your ${vehicle}.`,
+    `Your ${vehicle} is fast.`,
+    ``,
     `At the ${place}, you see a ${creature}`,
+    `The ${creature} is sad.`,
+    `The ${creature} is crying.`,
+    ``,
     `You say, "Hello ${creature}, my name is ${myName}"`,
-    `The ${creature} says, "Hello ${myName}, can you help me?!"`,
-    `I am lost.  I need to go to the ${place2} to find my friend ${
-      character0.name
-    }`,
-
-    // `${character0.name} is a ${character0.animal}.`,
-    // `${character1.name} is a ${character1.animal}.`,
-
-    // `${character0.name} ${character0.action} to the ${character0.place}.`,
-    // `${character1.name} ${character1.action} to the ${character0.place} too.`,
-    // `${character0.name} bumps into ${character1.name}.`,
-    // `${character0.name} sees a  ${creature}.`,
-    `  `
-
-    // `The ${creature} says, "Hello ${myName}!"`
+    `The ${creature} says, "Hello ${myName}, can you help me?"`,
+    `I am lost.`,
+    `I need to go to the ${place2} to find my friend ${character0.name}.`,
+    ``,
+    `But I am lost.`
   ];
 
   return story;
