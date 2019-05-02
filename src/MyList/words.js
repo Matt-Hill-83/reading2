@@ -3,95 +3,124 @@ const wordTypes = {
   name: "name",
   feeling: "feeling",
   place: "place",
-  clothes: "clothes",
+  garment: "garment",
   food: "food",
   vehicle: "vehicle",
-  action: "action"
+  action: "action",
+  creature: "creature"
 };
 
 const animals = [
-  { name: "cat", partOfSpeech: "noun", type: wordTypes.animal },
-  { name: "rat", partOfSpeech: "noun", type: wordTypes.animal },
-  { name: "bat", partOfSpeech: "noun", type: wordTypes.animal },
-  { name: "dog", partOfSpeech: "noun", type: wordTypes.animal },
-  { name: "pig", partOfSpeech: "noun", type: wordTypes.animal },
-  { name: "cow", partOfSpeech: "noun", type: wordTypes.animal },
-  { name: "bee", partOfSpeech: "noun", type: wordTypes.animal },
-  { name: "frog", partOfSpeech: "noun", type: wordTypes.animal },
-  { name: "crab", partOfSpeech: "noun", type: wordTypes.animal },
-  { name: "fish", partOfSpeech: "noun", type: wordTypes.animal },
-  { name: "bear", partOfSpeech: "noun", type: wordTypes.animal },
-  { name: "deer", partOfSpeech: "noun", type: wordTypes.animal },
-  { name: "bird", partOfSpeech: "noun", type: wordTypes.animal },
-  { name: "crow", partOfSpeech: "noun", type: wordTypes.animal },
-  { name: "turtle", partOfSpeech: "noun", type: wordTypes.animal },
-  { name: "bunny", partOfSpeech: "noun", type: wordTypes.animal },
-  { name: "monster", partOfSpeech: "noun", type: wordTypes.animal },
-  { name: "alligator", partOfSpeech: "noun", type: wordTypes.animal },
-  { name: "snake", partOfSpeech: "noun", type: wordTypes.animal }
+  { name: "cat", image: "noun", type: wordTypes.animal },
+  { name: "rat", image: "noun", type: wordTypes.animal },
+  { name: "bat", image: "noun", type: wordTypes.animal },
+  { name: "dog", image: "noun", type: wordTypes.animal },
+  { name: "pig", image: "noun", type: wordTypes.animal },
+  { name: "cow", image: "noun", type: wordTypes.animal },
+  { name: "bee", image: "noun", type: wordTypes.animal },
+  { name: "frog", image: "noun", type: wordTypes.animal },
+  { name: "crab", image: "noun", type: wordTypes.animal },
+  { name: "fish", image: "noun", type: wordTypes.animal },
+  { name: "bear", image: "noun", type: wordTypes.animal },
+  { name: "deer", image: "noun", type: wordTypes.animal },
+  { name: "bird", image: "noun", type: wordTypes.animal },
+  { name: "crow", image: "noun", type: wordTypes.animal },
+  { name: "turtle", image: "noun", type: wordTypes.animal },
+  { name: "bunny", image: "noun", type: wordTypes.animal },
+  { name: "monster", image: "noun", type: wordTypes.animal },
+  { name: "alligator", image: "noun", type: wordTypes.animal },
+  { name: "snake", image: "noun", type: wordTypes.animal }
+];
+
+const colors = [
+  { name: "red", image: "noun", type: wordTypes.color },
+  { name: "green", image: "noun", type: wordTypes.color }
 ];
 
 const actions = [
-  { name: "runs", partOfSpeech: "noun", type: wordTypes.action },
-  { name: "runs", partOfSpeech: "noun", type: wordTypes.action }
+  { name: "runs", image: "noun", type: wordTypes.action },
+  { name: "runs", image: "noun", type: wordTypes.action }
+];
+
+const creatures = [
+  { name: "unicorn", image: "noun", type: wordTypes.creature },
+  { name: "monster", image: "noun", type: wordTypes.creature },
+  { name: "mermaids", image: "noun", type: wordTypes.creature }
 ];
 
 const names = [
-  { name: "Bingo Bongo", partOfSpeech: "noun", type: wordTypes.name },
-  { name: "Bun Bun", partOfSpeech: "noun", type: wordTypes.name },
-  { name: "Charlie", partOfSpeech: "noun", type: wordTypes.name },
-  { name: "Bob", partOfSpeech: "noun", type: wordTypes.name },
-  { name: "Matt", partOfSpeech: "noun", type: wordTypes.name }
+  { name: "Bingo Bongo", image: "noun", type: wordTypes.name },
+  { name: "Bun Bun", image: "noun", type: wordTypes.name },
+  { name: "Charlie", image: "noun", type: wordTypes.name },
+  { name: "Bob", image: "noun", type: wordTypes.name },
+  { name: "Matt", image: "noun", type: wordTypes.name },
+  { name: "Mom", image: "noun", type: wordTypes.name },
+  { name: "Dad", image: "noun", type: wordTypes.name },
+  { name: "Mason", image: "noun", type: wordTypes.name },
+  { name: "Abi", image: "noun", type: wordTypes.name },
+  { name: "Elliot", image: "noun", type: wordTypes.name },
+  { name: "Annadare", image: "noun", type: wordTypes.name },
+  { name: "Noak", image: "noun", type: wordTypes.name },
+  { name: "Nick", image: "noun", type: wordTypes.name },
+  { name: "Chris", image: "noun", type: wordTypes.name },
+  { name: "Tami", image: "noun", type: wordTypes.name },
+  { name: "Nico", image: "noun", type: wordTypes.name },
+  { name: "Plato", image: "noun", type: wordTypes.name },
+  { name: "Plato", image: "noun", type: wordTypes.name }
 ];
 
 const emotions = [
-  { name: "sad", partOfSpeech: "noun", type: wordTypes.feeling },
-  { name: "mad", partOfSpeech: "noun", type: wordTypes.feeling },
-  { name: "glad", partOfSpeech: "noun", type: wordTypes.feeling },
-  { name: "happy", partOfSpeech: "noun", type: wordTypes.feeling },
-  { name: "silly", partOfSpeech: "noun", type: wordTypes.feeling },
-  { name: "angry", partOfSpeech: "noun", type: wordTypes.feeling },
-  { name: "scared", partOfSpeech: "noun", type: wordTypes.feeling },
-  { name: "brave", partOfSpeech: "noun", type: wordTypes.feeling },
-  { name: "surprised", partOfSpeech: "noun", type: wordTypes.feeling }
+  { name: "sad", image: "noun", type: wordTypes.feeling },
+  { name: "mad", image: "noun", type: wordTypes.feeling },
+  { name: "glad", image: "noun", type: wordTypes.feeling },
+  { name: "happy", image: "noun", type: wordTypes.feeling },
+  { name: "silly", image: "noun", type: wordTypes.feeling },
+  { name: "angry", image: "noun", type: wordTypes.feeling },
+  { name: "scared", image: "noun", type: wordTypes.feeling },
+  { name: "brave", image: "noun", type: wordTypes.feeling },
+  { name: "surprised", image: "noun", type: wordTypes.feeling }
 ];
 
 const locations = [
-  { name: "park", partOfSpeech: "noun", type: wordTypes.place },
-  { name: "lake", partOfSpeech: "noun", type: wordTypes.place },
-  { name: "store", partOfSpeech: "noun", type: wordTypes.place },
-  { name: "school", partOfSpeech: "noun", type: wordTypes.place },
-  { name: "forest", partOfSpeech: "noun", type: wordTypes.place },
-  { name: "beach", partOfSpeech: "noun", type: wordTypes.place },
-  { name: "playground", partOfSpeech: "noun", type: wordTypes.place }
+  { name: "park", image: "noun", type: wordTypes.place },
+  { name: "lake", image: "noun", type: wordTypes.place },
+  { name: "store", image: "noun", type: wordTypes.place },
+  { name: "school", image: "noun", type: wordTypes.place },
+  { name: "forest", image: "noun", type: wordTypes.place },
+  { name: "beach", image: "noun", type: wordTypes.place },
+  { name: "playground", image: "noun", type: wordTypes.place }
 ];
 
-const clothes = [
-  { name: "hat", partOfSpeech: "noun", type: wordTypes.clothes },
-  { name: "bow", partOfSpeech: "noun", type: wordTypes.clothes },
-  { name: "pants", partOfSpeech: "noun", type: wordTypes.clothes },
-  { name: "gloves", partOfSpeech: "noun", type: wordTypes.clothes },
-  { name: "shirt", partOfSpeech: "noun", type: wordTypes.clothes }
+const garments = [
+  { name: "hat", image: "noun", type: wordTypes.garment },
+  { name: "bow", image: "noun", type: wordTypes.garment },
+  { name: "pants", image: "noun", type: wordTypes.garment },
+  { name: "gloves", image: "noun", type: wordTypes.garment },
+  { name: "shirt", image: "noun", type: wordTypes.garment }
 ];
 
 const foods = [
-  { name: "pizza", partOfSpeech: "noun", type: wordTypes.food },
-  { name: "grass", partOfSpeech: "noun", type: wordTypes.food },
-  { name: "cake", partOfSpeech: "noun", type: wordTypes.food },
-  { name: "candy", partOfSpeech: "noun", type: wordTypes.food },
-  { name: "muffin", partOfSpeech: "noun", type: wordTypes.food },
-  { name: "lemon", partOfSpeech: "noun", type: wordTypes.food },
-  { name: "apple", partOfSpeech: "noun", type: wordTypes.food }
+  { name: "pizza", image: "noun", type: wordTypes.food },
+  { name: "grass", image: "noun", type: wordTypes.food },
+  { name: "cake", image: "noun", type: wordTypes.food },
+  { name: "candy", image: "noun", type: wordTypes.food },
+  { name: "muffin", image: "noun", type: wordTypes.food },
+  { name: "lemon", image: "noun", type: wordTypes.food },
+  { name: "apple", image: "noun", type: wordTypes.food },
+  { name: "cookies", image: "noun", type: wordTypes.food },
+  { name: "popsicle", image: "noun", type: wordTypes.food },
+  { name: "banana", image: "noun", type: wordTypes.food },
+  { name: "lollipop", image: "noun", type: wordTypes.food }
 ];
 
 const vehicles = [
-  { name: "car", partOfSpeech: "noun", type: wordTypes.vehicle },
-  { name: "bike", partOfSpeech: "noun", type: wordTypes.vehicle },
-  { name: "scooter", partOfSpeech: "noun", type: wordTypes.vehicle },
-  { name: "boat", partOfSpeech: "noun", type: wordTypes.vehicle },
-  { name: "plane", partOfSpeech: "noun", type: wordTypes.vehicle },
-  { name: "train", partOfSpeech: "noun", type: wordTypes.vehicle },
-  { name: "helicopter", partOfSpeech: "noun", type: wordTypes.vehicle }
+  { name: "car", image: "noun", type: wordTypes.vehicle },
+  { name: "bike", image: "noun", type: wordTypes.vehicle },
+  { name: "scooter", image: "noun", type: wordTypes.vehicle },
+  { name: "boat", image: "noun", type: wordTypes.vehicle },
+  { name: "plane", image: "noun", type: wordTypes.vehicle },
+  { name: "train", image: "noun", type: wordTypes.vehicle },
+  { name: "helicopter", image: "noun", type: wordTypes.vehicle }
 ];
 
 const words = [
@@ -100,9 +129,10 @@ const words = [
   ...names,
   ...emotions,
   ...locations,
-  ...clothes,
+  ...garments,
   ...foods,
-  ...vehicles
+  ...vehicles,
+  ...creatures
 ];
 
 export default {

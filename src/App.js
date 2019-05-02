@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
 import "./blueprint.css";
 
 import MyList from "./MyList/MyList";
