@@ -3,7 +3,6 @@ import { IconNames } from "@blueprintjs/icons";
 import { Button, Icon, Tab, Tabs } from "@blueprintjs/core";
 // import { SketchPicker } from "react-color";
 
-// import React from "react";
 // import { observer } from "mobx-react";
 
 import Utils from "./utils.js";
@@ -70,6 +69,7 @@ export default class MyList extends React.Component {
 
   newStory = () => {
     mySentences.makeStory({ words: this.state.words });
+    this.setState({ showStory: !this.state.showStory });
   };
 
   render() {
@@ -93,40 +93,58 @@ export default class MyList extends React.Component {
       );
     });
 
-    const goodAtList = ["math", "reading", "punching"];
+    const goodAtList = [
+      "math",
+      "reading",
+      "art",
+      "sports",
+      "school",
+      "jumping"
+    ];
     const goodAt = Utils.getRandomItem({ items: goodAtList });
+
+    const toggleButton = (
+      <Button className={"new-story-btn"} onClick={this.newStory}>
+        New Story
+      </Button>
+    );
 
     return (
       <div className="main">
         <span className="header banner">
-          {`Girls are good at ...${goodAt}!`}
-          <Button className={"new-story-btn"} onClick={this.newStory}>
-            New Story
-          </Button>
+          {`Girls are good at...    ${goodAt}!`}
+
+          {toggleButton}
         </span>
         <div className="body">
-          <div className="left">
-            <span className="header">Flash Cards</span>
+          {!this.state.showStory && (
+            <div className="left">
+              <span className="header">Flash Cards</span>
 
-            <Tabs id="TabsExample">{renderedPanels}</Tabs>
-          </div>
-          <div className="center">
-            <span className="header">
-              {`Words I Can Read --- ${
-                Utils.getWordsByFavorite({ words }).length
-              }`}
-            </span>
+              <Tabs id="TabsExample">{renderedPanels}</Tabs>
+            </div>
+          )}
+          {!this.state.showStory && (
+            <div className="center">
+              <span className="header">
+                {`Words I Can Read --- ${
+                  Utils.getWordsByFavorite({ words }).length
+                }`}
+              </span>
 
-            {this.renderFlashCards({
-              words: Utils.getWordsByFavorite({ words })
-            })}
-          </div>
+              {this.renderFlashCards({
+                words: Utils.getWordsByFavorite({ words })
+              })}
+            </div>
+          )}
 
-          <div className="right">
-            {/* <SketchPicker /> */}
-            <span className="header">Story</span>
-            <div className="story">{this.renderSentences()}</div>
-          </div>
+          {this.state.showStory && (
+            <div className="right">
+              {/* <SketchPicker /> */}
+              <span className="header">Story</span>
+              <div className="story">{this.renderSentences()}</div>
+            </div>
+          )}
         </div>
       </div>
     );

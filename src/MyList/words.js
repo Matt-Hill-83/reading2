@@ -32,20 +32,33 @@ const animals = [
   { name: "snake", image: "noun", type: wordTypes.animal }
 ];
 
+const other = [
+  { name: "today", image: "noun", type: wordTypes.other },
+  { name: "green", image: "noun", type: wordTypes.other }
+];
+
 const colors = [
   { name: "red", image: "noun", type: wordTypes.color },
+  { name: "purple", image: "noun", type: wordTypes.color },
+  { name: "pink", image: "noun", type: wordTypes.color },
+  { name: "pink", image: "noun", type: wordTypes.color },
   { name: "green", image: "noun", type: wordTypes.color }
 ];
 
 const actions = [
   { name: "runs", image: "noun", type: wordTypes.action },
-  { name: "runs", image: "noun", type: wordTypes.action }
+  { name: "flys", image: "noun", type: wordTypes.action }
 ];
 
 const creatures = [
   { name: "unicorn", image: "noun", type: wordTypes.creature },
   { name: "monster", image: "noun", type: wordTypes.creature },
-  { name: "mermaids", image: "noun", type: wordTypes.creature }
+  { name: "mermaids", image: "noun", type: wordTypes.creature },
+  { name: "zombie", image: "noun", type: wordTypes.creature },
+  { name: "elf", image: "noun", type: wordTypes.creature },
+  { name: "fairy", image: "noun", type: wordTypes.creature },
+  { name: "goblin", image: "noun", type: wordTypes.creature },
+  { name: "giant", image: "noun", type: wordTypes.creature }
 ];
 
 const names = [
@@ -132,7 +145,9 @@ const words = [
   ...garments,
   ...foods,
   ...vehicles,
-  ...creatures
+  ...creatures,
+  ...other,
+  ...colors
 ];
 
 export default {

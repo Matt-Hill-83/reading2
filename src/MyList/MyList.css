@@ -1,3 +1,7 @@
+.hide {
+  display: none;
+}
+
 .new-story-btn {
   border: 1px solid blue !important;
   margin-left: 100px;

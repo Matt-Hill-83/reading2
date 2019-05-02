@@ -19,6 +19,11 @@ const makeStory = ({ words }) => {
     words,
     type: myWords.wordTypes.place
   });
+
+  const place2 = getRandomWordByType({
+    words,
+    type: myWords.wordTypes.place
+  });
   // create function to create a character with a random set of attributes
   // turn it into a choose your own adventure.
   const character0 = {
@@ -35,17 +40,29 @@ const makeStory = ({ words }) => {
     place: place
   };
 
-  const story = [
-    `I am Charlie.`,
-    `I walk to the ${place}.`,
-    `${character0.name} is a ${character0.animal}.`,
-    `${character1.name} is a ${character1.animal}.`,
+  const myName = "Pria";
+  // const myName = "Charlie";
 
-    `${character0.name} ${character0.action} to the ${character0.place}.`,
-    `${character1.name} ${character1.action} to the ${character0.place} too.`,
-    `${character0.name} bumps into ${character1.name}.`,
-    `${character0.name} sees a  ${creature}.`,
-    `${character0.name} says  stop to the ${creature}.`
+  const story = [
+    `Your name is ${myName}.`,
+    `You walk to the ${place}.`,
+    `At the ${place}, you see a ${creature}`,
+    `You say, "Hello ${creature}, my name is ${myName}"`,
+    `The ${creature} says, "Hello ${myName}, can you help me?!"`,
+    `I am lost.  I need to go to the ${place2} to find my friend ${
+      character0.name
+    }`,
+
+    // `${character0.name} is a ${character0.animal}.`,
+    // `${character1.name} is a ${character1.animal}.`,
+
+    // `${character0.name} ${character0.action} to the ${character0.place}.`,
+    // `${character1.name} ${character1.action} to the ${character0.place} too.`,
+    // `${character0.name} bumps into ${character1.name}.`,
+    // `${character0.name} sees a  ${creature}.`,
+    `  `
+
+    // `The ${creature} says, "Hello ${myName}!"`
   ];
 
   return story;
