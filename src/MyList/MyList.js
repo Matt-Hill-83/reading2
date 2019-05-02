@@ -145,7 +145,9 @@ export default class MyList extends React.Component {
               <span className="header">Story</span>
               <div className="story-box">
                 <div className="story">{this.renderSentences()}</div>
-                <img className="background-image" src={meadow} alt="meadow" />
+                <div className="background-image">
+                  <img src={meadow} alt="meadow" />
+                </div>
               </div>
             </div>
           )}
