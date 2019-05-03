@@ -1,17 +1,17 @@
-const removeFavorites = words => words.filter(word => !word.isFavorite);
+export default class Utils {
+  static removeFavorites = words => words.filter(word => !word.isFavorite);
 
-const getWordsByType = ({ words, type }) =>
-  words.filter(word => word.type === type);
+  static getWordsByType = ({ words, type }) =>
+    words.filter(word => word.type === type);
 
-const getWordsByFavorite = ({ words, type }) =>
-  words.filter(word => word.isFavorite === true);
+  static getWordsByFavorite = ({ words, type }) =>
+    words.filter(word => word.isFavorite === true);
 
-const getRandomItem = ({ items }) =>
-  items[Math.floor(Math.random() * items.length)];
+  static getRandomItem = ({ items }) =>
+    items[Math.floor(Math.random() * items.length)];
 
-export default {
-  removeFavorites,
-  getWordsByType,
-  getWordsByFavorite,
-  getRandomItem
-};
+  static getRandomWordByType = ({ words, type }) => {
+    const output = this.getWordsByType({ words, type }).map(word => word.name);
+    return this.getRandomItem({ items: output });
+  };
+}

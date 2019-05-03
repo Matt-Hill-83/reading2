@@ -1,26 +1,19 @@
 import myWords from "./words.js";
-// import { wordTypes } from "./words.js";
 import Utils from "./utils.js";
 
 const { words, wordTypes } = myWords;
-
-const getRandomWordByType = ({ words, type }) => {
-  const output = Utils.getWordsByType({ words, type }).map(word => word.name);
-  return Utils.getRandomItem({ items: output });
-};
 
 console.log("words", words); // zzz
 console.log("wordTypes", wordTypes); // zzz
 
 // flag a word : isUsedInStory
-// const words = words;
 
 const plot = {
   you: {
     name: "Priana",
     creature: "girl",
     homePlace: "forest",
-    vehicle: getRandomWordByType({
+    vehicle: Utils.getRandomWordByType({
       words: words,
       type: wordTypes.vehicle
     })
@@ -28,7 +21,7 @@ const plot = {
   missingItems: ["birthday present", "key", "flower"],
   scenes: [
     {
-      place: getRandomWordByType({
+      place: Utils.getRandomWordByType({
         words,
         type: wordTypes.place
       }),
@@ -50,25 +43,25 @@ const plot = {
 
 const makeStory = ({ words, plot = {} }) => {
   const actions = Utils.getWordsByType({ words, type: "action" });
-  const creature = getRandomWordByType({
+  const creature = Utils.getRandomWordByType({
     words,
     type: wordTypes.creature
   });
 
-  // const place = getRandomWordByType({
+  // const place = Utils.getRandomWordByType({
   //   words,
   //   type: wordTypes.place
   // });
 
-  const place2 = getRandomWordByType({
+  const place2 = Utils.getRandomWordByType({
     words,
     type: wordTypes.place
   });
   // create function to create a character with a random set of attributes
   // turn it into a choose your own adventure.
   const character0 = {
-    name: getRandomWordByType({ words, type: wordTypes.name }),
-    animal: getRandomWordByType({ words, type: wordTypes.animal }),
+    name: Utils.getRandomWordByType({ words, type: wordTypes.name }),
+    animal: Utils.getRandomWordByType({ words, type: wordTypes.animal }),
     action: actions[0].name
     // place: place
   };
