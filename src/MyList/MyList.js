@@ -5,6 +5,8 @@ import { Button, Icon, Tab, Tabs } from "@blueprintjs/core";
 
 // import { observer } from "mobx-react";
 import meadow from "./meadow.jpg";
+import unicorn from "../images/unicorn-1.png";
+import fairy from "../images/fairy-1.png";
 // import meadow from "../images/meadow.jpg";
 
 import Utils from "./utils.js";
@@ -22,8 +24,10 @@ export default class MyList extends React.Component {
   };
 
   async componentDidMount() {
+    console.log("mySentences.plot", mySentences.plot); // zzz
+
     const words = myWords.words;
-    const sentences = mySentences.makeStory({ words });
+    const sentences = mySentences.makeStory({ words, plot: mySentences.plot });
     this.setState({ words, sentences });
   }
 
@@ -142,11 +146,23 @@ export default class MyList extends React.Component {
           {this.state.showStory && (
             <div className="right">
               {/* <SketchPicker /> */}
-              <span className="header">Story</span>
+              {/* <span className="header">Story</span> */}
               <div className="story-box">
                 <div className="story">{this.renderSentences()}</div>
-                <div className="background-image">
-                  <img src={meadow} alt="meadow" />
+                <div className="image-container">
+                  <div className="background-image">
+                    <img src={meadow} alt="meadow" />
+                    <img
+                      className="character-image character1"
+                      src={unicorn}
+                      alt="unicorn"
+                    />
+                    <img
+                      className="character-image character2"
+                      src={fairy}
+                      alt="fairy"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

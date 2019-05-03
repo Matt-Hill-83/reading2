@@ -52,13 +52,13 @@ const actions = [
 
 const creatures = [
   { name: "unicorn", image: "noun", type: wordTypes.creature },
-  { name: "monster", image: "noun", type: wordTypes.creature },
-  { name: "mermaids", image: "noun", type: wordTypes.creature },
-  { name: "zombie", image: "noun", type: wordTypes.creature },
-  { name: "elf", image: "noun", type: wordTypes.creature },
-  { name: "fairy", image: "noun", type: wordTypes.creature },
-  { name: "goblin", image: "noun", type: wordTypes.creature },
-  { name: "giant", image: "noun", type: wordTypes.creature }
+  // { name: "monster", image: "noun", type: wordTypes.creature },
+  { name: "mermaid", image: "noun", type: wordTypes.creature },
+  // { name: "zombie", image: "noun", type: wordTypes.creature },
+  // { name: "elf", image: "noun", type: wordTypes.creature },
+  { name: "fairy", image: "noun", type: wordTypes.creature }
+  // { name: "goblin", image: "noun", type: wordTypes.creature },
+  // { name: "giant", image: "noun", type: wordTypes.creature }
 ];
 
 const names = [
@@ -99,9 +99,10 @@ const locations = [
   { name: "lake", image: "noun", type: wordTypes.place },
   { name: "store", image: "noun", type: wordTypes.place },
   { name: "school", image: "noun", type: wordTypes.place },
-  { name: "forest", image: "noun", type: wordTypes.place },
-  { name: "beach", image: "noun", type: wordTypes.place },
-  { name: "playground", image: "noun", type: wordTypes.place }
+  // { name: "forest", image: "noun", type: wordTypes.place },
+  { name: "woods", image: "noun", type: wordTypes.place }
+  // { name: "beach", image: "noun", type: wordTypes.place },
+  // { name: "playground", image: "noun", type: wordTypes.place }
 ];
 
 const garments = [
@@ -132,8 +133,8 @@ const vehicles = [
   { name: "scooter", image: "noun", type: wordTypes.vehicle },
   { name: "boat", image: "noun", type: wordTypes.vehicle },
   { name: "plane", image: "noun", type: wordTypes.vehicle },
-  { name: "train", image: "noun", type: wordTypes.vehicle },
-  { name: "helicopter", image: "noun", type: wordTypes.vehicle }
+  { name: "train", image: "noun", type: wordTypes.vehicle }
+  // { name: "helicopter", image: "noun", type: wordTypes.vehicle }
 ];
 
 const words = [
