@@ -23,7 +23,7 @@ const plot = {
           words,
           type: wordTypes.creature
         }),
-        name: "Luna cat"
+        name: "Crystal"
       }
     },
     {
@@ -51,7 +51,7 @@ const makeStory = ({ plot }) => {
 
     `You have a ${you.vehicle}.`,
     `Your ${you.vehicle} is fast.`,
-    `You ride your ${you.vehicle} to the ${scenes[0].place}.`,
+    `You ride your ${you.vehicle} to the ${scenes[0].place} to play.`,
     ``,
     `At the ${scenes[0].place}, you see a ${scenes[0].newFriend.type}`,
     `The ${scenes[0].newFriend.type} is sad.`,
@@ -62,12 +62,21 @@ const makeStory = ({ plot }) => {
       you.name
     }, can you help me?"`,
     `I am lost.`,
-    `I need to go to the ${scenes[1].place} to find ${
+    `I need to go to the ${scenes[1].place} to find my friend ${
       scenes[1].newFriend.name
     }.`,
     ``,
     `But I am lost.`,
-    `I am sooooooo sad.`
+    `I am sooooooo sad.`,
+    ``,
+    ``,
+    `What should you do?`,
+    ``,
+    `Stay at the ${scenes[0].place}.`,
+    `or`,
+    `Go to the ${scenes[1].place} with ${scenes[0].newFriend.name} the ${
+      scenes[0].newFriend.type
+    }.`
   ];
 
   return story;
