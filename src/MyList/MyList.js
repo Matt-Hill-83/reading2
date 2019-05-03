@@ -2,7 +2,6 @@ import React from "react";
 import { IconNames } from "@blueprintjs/icons";
 import { Button, Icon, Tab, Tabs } from "@blueprintjs/core";
 // import { SketchPicker } from "react-color";
-
 // import { observer } from "mobx-react";
 
 import Utils from "./utils.js";
