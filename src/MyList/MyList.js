@@ -4,16 +4,15 @@ import { Button, Icon, Tab, Tabs } from "@blueprintjs/core";
 // import { SketchPicker } from "react-color";
 
 // import { observer } from "mobx-react";
-import fairy from "../images/fairy-1.png";
-import meadow from "../images/meadow.jpg";
-import unicorn from "../images/unicorn-1.png";
 
 import Utils from "./utils.js";
+import Images from "../images/images.js";
 
 import myWords from "./words.js";
 import mySentences from "./sentences.js";
 
 import "./MyList.css";
+
 const { makeStory, plot } = mySentences;
 const { words, wordTypes } = myWords;
 
@@ -149,15 +148,15 @@ export default class MyList extends React.Component {
                 <div className="story">{this.renderSentences()}</div>
                 <div className="image-container">
                   <div className="background-image">
-                    <img src={meadow} alt="meadow" />
+                    <img src={Images.meadow} alt="meadow" />
                     <img
                       className="character-image character1"
-                      src={unicorn}
+                      src={Images.unicorn}
                       alt="unicorn"
                     />
                     <img
                       className="character-image character2"
-                      src={fairy}
+                      src={Images.fairy}
                       alt="fairy"
                     />
                   </div>
