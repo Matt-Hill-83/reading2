@@ -3,11 +3,6 @@ import Utils from "./utils.js";
 
 const { words, wordTypes } = myWords;
 
-console.log("words", words); // zzz
-console.log("wordTypes", wordTypes); // zzz
-
-// flag a word : isUsedInStory
-
 const plot = {
   you: {
     name: "Priana",
@@ -86,28 +81,8 @@ const makeStory = ({ words, plot = {} }) => {
     `But I am lost.`,
     `I am sooooooo sad.`
   ];
-  // const story = [
-  //   `Your name is ${myName}.`,
-  //   // `You have a magical ${friend.type} named r ${friend.name}.`,
-  //   `You go to the ${place} in your ${vehicle}.`,
-  //   `Your ${vehicle} is fast.`,
-  //   ``,
-  //   `At the ${place}, you see a ${creature}`,
-  //   `The ${creature} is sad.`,
-  //   `The ${creature} is crying.`,
-  //   ``,
-  //   `You say, "Hello ${creature}, my name is ${myName}"`,
-  //   `The ${creature} says, "Hello ${myName}, can you help me?"`,
-  //   `I am lost.`,
-  //   `I need to go to the ${place2} to find my friend ${character0.name}.`,
-  //   ``,
-  //   `But I am lost.`,
-  //   `I am sooooooo sad.`
-  // ];
 
   return story;
 };
-
-// const story1 = makeStory({ words: words });
 
 export default { makeStory, plot };

@@ -4,10 +4,9 @@ import { Button, Icon, Tab, Tabs } from "@blueprintjs/core";
 // import { SketchPicker } from "react-color";
 
 // import { observer } from "mobx-react";
-import meadow from "./meadow.jpg";
-import unicorn from "../images/unicorn-1.png";
 import fairy from "../images/fairy-1.png";
-// import meadow from "../images/meadow.jpg";
+import meadow from "../images/meadow.jpg";
+import unicorn from "../images/unicorn-1.png";
 
 import Utils from "./utils.js";
 
@@ -15,19 +14,18 @@ import myWords from "./words.js";
 import mySentences from "./sentences.js";
 
 import "./MyList.css";
+const { makeStory, plot } = mySentences;
+const { words, wordTypes } = myWords;
 
 export default class MyList extends React.Component {
   state = {
-    activeTab: myWords.wordTypes["name"],
+    activeTab: wordTypes["name"],
     sentences: [],
     showStory: true
   };
 
   async componentDidMount() {
-    console.log("mySentences.plot", mySentences.plot); // zzz
-
-    const words = myWords.words;
-    const sentences = mySentences.makeStory({ words, plot: mySentences.plot });
+    const sentences = makeStory({ words, plot: plot });
     this.setState({ words, sentences });
   }
 
@@ -73,7 +71,7 @@ export default class MyList extends React.Component {
   };
 
   newStory = () => {
-    mySentences.makeStory({ words: this.state.words });
+    makeStory({ words: this.state.words });
     this.setState({ showStory: !this.state.showStory });
   };
 
@@ -83,7 +81,7 @@ export default class MyList extends React.Component {
       return null;
     }
 
-    const renderedPanels = Object.keys(myWords.wordTypes).map((type, i) => {
+    const renderedPanels = Object.keys(wordTypes).map((type, i) => {
       const wordsNoFavorites = Utils.removeFavorites(
         Utils.getWordsByType({ words, type })
       );

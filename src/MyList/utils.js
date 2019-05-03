@@ -1,3 +1,6 @@
+// todo
+// flag a word : isUsedInStory
+
 export default class Utils {
   static removeFavorites = words => words.filter(word => !word.isFavorite);
 
@@ -12,6 +15,10 @@ export default class Utils {
 
   static getRandomWordByType = ({ words, type }) => {
     const output = this.getWordsByType({ words, type }).map(word => word.name);
+
+    // output.isUsed = true;
+    // need to output objects
+
     return this.getRandomItem({ items: output });
   };
 }
