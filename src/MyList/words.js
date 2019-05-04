@@ -2,7 +2,7 @@ const wordTypes = {
   animal: "animal",
   name: "name",
   feeling: "feeling",
-  place: "place",
+  location: "location",
   garment: "garment",
   food: "food",
   vehicle: "vehicle",
@@ -95,14 +95,17 @@ const emotions = [
 ];
 
 const locations = [
-  { name: "park", image: "noun", type: wordTypes.place },
-  { name: "lake", image: "noun", type: wordTypes.place },
-  { name: "store", image: "noun", type: wordTypes.place },
-  { name: "school", image: "noun", type: wordTypes.place },
-  // { name: "forest", image: "noun", type: wordTypes.place },
-  { name: "woods", image: "noun", type: wordTypes.place }
-  // { name: "beach", image: "noun", type: wordTypes.place },
-  // { name: "playground", image: "noun", type: wordTypes.place }
+  { name: "park", image: "noun", type: wordTypes.location },
+  { name: "lake", image: "noun", type: wordTypes.location },
+  { name: "store", image: "noun", type: wordTypes.location },
+  { name: "school", image: "noun", type: wordTypes.location },
+  // { name: "forest", image: "noun", type: wordTypes.location },
+  { name: "library", image: "noun", type: wordTypes.location },
+  { name: "island", image: "noun", type: wordTypes.location },
+  { name: "waterfall", image: "noun", type: wordTypes.location },
+  { name: "home", image: "noun", type: wordTypes.location }
+  // { name: "beach", image: "noun", type: wordTypes.location },
+  // { name: "playground", image: "noun", type: wordTypes.location }
 ];
 
 const garments = [
