@@ -20,20 +20,22 @@ const { words, wordTypes } = myWords;
 export default class MyList extends React.Component {
   state = {
     activeTab: wordTypes["name"],
-    sentences: [],
     showStory: true,
     activeScene: undefined
   };
 
   async componentDidMount() {
-    this.setState({ words, activeScene: plot.activeScene });
+    this.setState({ activeScene: plot.activeScene });
   }
 
   renderSentences = () => {
     const sentences = makeStory({ words, plot });
-    return sentences[0].map((sentence, i) => {
-      return <span key={i} className="word sentence">{`${sentence}`}</span>;
-    });
+    return (
+      sentences &&
+      sentences[0].map((sentence, i) => {
+        return <span key={i} className="word sentence">{`${sentence}`}</span>;
+      })
+    );
   };
 
   // renderButtons = () => {
@@ -44,16 +46,11 @@ export default class MyList extends React.Component {
   // };
 
   newStory = () => {
-    makeStory({ words: this.state.words });
+    makeStory({ words });
     this.setState({ showStory: !this.state.showStory });
   };
 
   render() {
-    const words = this.state.words;
-    if (!words) {
-      return null;
-    }
-
     const goodAtList = [
       "math",
       "reading",
