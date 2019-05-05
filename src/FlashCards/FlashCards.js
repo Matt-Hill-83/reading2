@@ -7,7 +7,7 @@ import Images from "../images/images.js";
 
 import myWords from "../Models/words.js";
 
-import "./FlashCards.css";
+import css from "./FlashCards.css";
 
 const { words, wordTypes } = myWords;
 
@@ -76,7 +76,7 @@ export default class FlashCards extends React.Component {
     });
 
     return (
-      <div className="center">
+      <div className="main2">
         <div className="left">
           <span className="header">Flash Cards</span>
 

@@ -110,7 +110,7 @@
   align-items: center;
 }
 
-.word-tools-container {
+/* .word-tools-container {
   display: flex;
 }
 
@@ -120,8 +120,6 @@
   align-items: center;
 }
 
-.index {
-}
 
 .word {
   margin-left: 24px;
@@ -130,4 +128,4 @@
 
 .favorite-button {
   margin-left: 24px;
-}
+} */

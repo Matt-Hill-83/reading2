@@ -46,7 +46,7 @@ export default class MyList extends React.Component {
   // };
 
   newStory = () => {
-    makeStory({ words });
+    makeStory({ words, plot });
     this.setState({ showStory: !this.state.showStory });
   };
 
