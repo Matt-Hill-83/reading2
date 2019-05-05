@@ -13,14 +13,15 @@ import FlashCards from "../FlashCards/FlashCards";
 
 import "./MyList.css";
 
-const { makeStory, plot } = mySentences;
+const { getNarrative, plot } = mySentences;
 const { words, wordTypes } = myWords;
 
 export default class MyList extends React.Component {
   state = {
     activeTab: wordTypes.name,
     showStory: true,
-    activeScene: undefined
+    activeScene: undefined,
+    page: 0
   };
 
   async componentWillMount() {
@@ -30,7 +31,7 @@ export default class MyList extends React.Component {
   }
 
   renderScene = ({ activeScene }) => {
-    const sentences = makeStory({
+    const sentences = getNarrative({
       plot,
       activeScene: activeScene,
       nextSceneA: activeScene,
@@ -50,15 +51,11 @@ export default class MyList extends React.Component {
   };
 
   renderButtons = ({ activeScene }) => {
-    return activeScene.buttons.map((button, i) => {
-      console.log(
-        "this.state.plot.scenes[button.nextScene",
-        plot.scenes[button.nextScene]
-      ); // zzz
-
+    const buttons = activeScene.buttons.map((button, i) => {
       const onClick = ({}) => {
         this.setState({
-          activeScene: plot.scenes[button.nextScene]
+          activeScene: plot.scenes[button.nextScene],
+          page: this.state.page + 1
         });
       };
 
@@ -68,6 +65,7 @@ export default class MyList extends React.Component {
         }`}</Button>
       );
     });
+    return <div className="decision-button-row">{buttons}</div>;
   };
 
   newStory = () => {
@@ -108,27 +106,25 @@ export default class MyList extends React.Component {
         <div className="body">
           {!this.state.showStory && <FlashCards />}
           {this.state.showStory && (
-            <div className="right">
-              {/* <SketchPicker /> */}
-              <div className="story-box">
+            <div className="story-box">
+              <div className="text-page">
+                <div className="page-number">{`Page ${this.state.page}`}</div>
                 <div className="story">{this.renderScene({ activeScene })}</div>
-                <div xxx-className="story">
-                  {this.renderButtons({ activeScene })}
-                </div>
-                <div className="image-container">
-                  <div className="background-image">
-                    <img src={Images.meadow} alt="meadow" />
-                    <img
-                      className="character-image character1"
-                      src={Images.unicorn}
-                      alt="unicorn"
-                    />
-                    <img
-                      className="character-image character2"
-                      src={Images.fairy}
-                      alt="fairy"
-                    />
-                  </div>
+                {this.renderButtons({ activeScene })}
+              </div>
+              <div className="image-container">
+                <div className="background-image">
+                  <img src={Images.meadow} alt="meadow" />
+                  <img
+                    className="character-image character1"
+                    src={Images.unicorn}
+                    alt="unicorn"
+                  />
+                  <img
+                    className="character-image character2"
+                    src={Images.fairy}
+                    alt="fairy"
+                  />
                 </div>
               </div>
             </div>

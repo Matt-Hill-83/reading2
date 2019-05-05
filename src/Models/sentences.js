@@ -90,27 +90,17 @@ const lostAnimalStory = ({ you, activeScene, nextSceneA }) => {
   ];
 };
 
-const makeStory = ({ plot, activeScene, nextSceneA, nextSceneB }) => {
+const getNarrative = ({ plot, activeScene, nextSceneA, nextSceneB }) => {
   if (activeScene) {
     activeScene.isVisited = true;
   }
 
   const { you, scenes } = plot;
 
-  const story = [
+  return [
     createHomeStory({ you }),
     lostAnimalStory({ you, activeScene, nextSceneA })
-
-    // `What should you do?`,
-    // ``,
-    // `Stay at the ${scenes[0].location}.`,
-    // `or`,
-    // `Go to the ${scenes[1].location} with ${scenes[0].newFriend.name} the ${
-    //   scenes[0].newFriend.type
-    // }.`
   ];
-
-  return story;
 };
 
-export default { makeStory, plot };
+export default { getNarrative, plot };
