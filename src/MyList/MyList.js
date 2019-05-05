@@ -1,6 +1,5 @@
 import React from "react";
-import { IconNames } from "@blueprintjs/icons";
-import { Button, Icon, Tab, Tabs } from "@blueprintjs/core";
+import { Button } from "@blueprintjs/core";
 // import { SketchPicker } from "react-color";
 // import { observer } from "mobx-react";
 
@@ -19,7 +18,7 @@ const { words, wordTypes } = myWords;
 
 export default class MyList extends React.Component {
   state = {
-    activeTab: wordTypes["name"],
+    activeTab: wordTypes.name,
     showStory: true,
     activeScene: undefined
   };
@@ -29,7 +28,8 @@ export default class MyList extends React.Component {
   }
 
   renderSentences = () => {
-    const sentences = makeStory({ words, plot });
+    const sentences = makeStory({ plot });
+
     return (
       sentences &&
       sentences[0].map((sentence, i) => {
@@ -46,11 +46,13 @@ export default class MyList extends React.Component {
   // };
 
   newStory = () => {
-    makeStory({ words, plot });
+    makeStory({ plot });
     this.setState({ showStory: !this.state.showStory });
   };
 
   render() {
+    console.log("render MyList"); // zzz
+
     const goodAtList = [
       "math",
       "reading",
@@ -64,7 +66,7 @@ export default class MyList extends React.Component {
 
     const toggleButton = (
       <Button className={"new-story-btn"} onClick={this.newStory}>
-        New Story
+        Toggle
       </Button>
     );
 

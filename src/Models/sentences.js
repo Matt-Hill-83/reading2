@@ -39,7 +39,7 @@ const startScene = scenes.home;
 
 const plot = {
   scenesHistory: [],
-  currentScene: startScene,
+  activeScene: startScene,
   you: {
     name: "Priana",
     creature: "girl",
@@ -51,6 +51,10 @@ const plot = {
 };
 
 const makeStory = ({ plot, activeScene }) => {
+  if (activeScene) {
+    activeScene.isVisited = true;
+  }
+
   const { you, scenes } = plot;
 
   const story = [
@@ -61,9 +65,7 @@ const makeStory = ({ plot, activeScene }) => {
       ``,
       `You have a ${you.vehicle}.`,
       `Your ${you.vehicle} is fast.`,
-      `You ride your ${you.vehicle} to the ${
-        plot.currentScene.location
-      } to play.`
+      `Where do you go on your scooter?`
     ]
     // [
     //   `At the ${scenes[0].location}, you see a ${scenes[0].newFriend.type}`,
