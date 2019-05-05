@@ -11,7 +11,8 @@ import mySentences from "../Models/sentences.js";
 
 import FlashCards from "../FlashCards/FlashCards";
 
-import "./MyList.css";
+// import css from "./MyList.scss";
+import "./MyList.scss";
 
 const { getNarrative, plot } = mySentences;
 const { words, wordTypes } = myWords;
@@ -31,17 +32,17 @@ export default class MyList extends React.Component {
   }
 
   renderScene = ({ activeScene }) => {
-    const sentences = getNarrative({
+    const narrative = getNarrative({
       plot,
       activeScene: activeScene,
       nextSceneA: activeScene,
       nextSceneB: activeScene
     });
 
-    const index = this.state.page % 2;
+    const nextSceneIndex = this.state.page % 2;
     return (
-      sentences &&
-      sentences[index].map((sentence, i) => {
+      narrative &&
+      narrative[nextSceneIndex].map((sentence, i) => {
         return (
           <span key={i} className="sentence">
             {sentence}
@@ -96,6 +97,7 @@ export default class MyList extends React.Component {
     console.log("this.state", this.state); // zzz
 
     return (
+      // <div className={css.test}>
       <div className="main">
         <span className="header banner">
           {`Girls are good at...    ${goodAt}!`}
