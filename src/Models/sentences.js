@@ -3,6 +3,37 @@ import Utils from "../Utils/Utils.js";
 
 const { words, wordTypes } = myWords;
 
+// This cannot be chosen for the next scene.
+const createHomeStory = ({ you }) => {
+  return [
+    `Your name is ${you.name}.`,
+    `You live in the ${you.homeLocation}.`,
+    `You are happy.`,
+    ``,
+    `You have a ${you.vehicle}.`,
+    `Your ${you.vehicle} is fast.`,
+    `Where do you go?`
+  ];
+};
+
+const lostAnimalStory = ({ you, activeScene, nextSceneA }) => {
+  return [
+    `At the ${activeScene.location}, you see a ${activeScene.newFriend.type}`,
+    `The ${activeScene.newFriend.type} is sad.`,
+    `The ${activeScene.newFriend.type} is crying.`,
+    `You say, "Hello ${activeScene.newFriend.type}, my name is ${you.name}"`,
+    `The ${activeScene.newFriend.type} says, "Hello ${
+      you.name
+    }, can you help me?"`,
+    `I am lost.`,
+    `I need to go to the ${nextSceneA.location} to find my friend ${
+      nextSceneA.newFriend.name
+    }.`,
+    `But I am lost.`,
+    `I am sooooooo sad.`
+  ];
+};
+
 const scenes = {
   home: {
     location: Utils.getRandomWordByType({
@@ -20,7 +51,8 @@ const scenes = {
     buttons: [
       { label: "", nextScene: "waterfall" },
       { label: "", nextScene: "island" }
-    ]
+    ],
+    narrative: createHomeStory
   },
 
   island: {
@@ -58,42 +90,18 @@ const plot = {
   scenes
 };
 
-const createHomeStory = ({ you }) => {
-  return [
-    `Your name is ${you.name}.`,
-    `You live in the ${you.homeLocation}.`,
-    `You are happy.`,
-    ``,
-    `You have a ${you.vehicle}.`,
-    `Your ${you.vehicle} is fast.`,
-    `Where do you go?`
-  ];
-};
-
-const lostAnimalStory = ({ you, activeScene, nextSceneA }) => {
-  return [
-    `At the ${activeScene.location}, you see a ${activeScene.newFriend.type}`,
-    `The ${activeScene.newFriend.type} is sad.`,
-    `The ${activeScene.newFriend.type} is crying.`,
-    `You say, "Hello ${activeScene.newFriend.type}, my name is ${you.name}"`,
-    `The ${activeScene.newFriend.type} says, "Hello ${
-      you.name
-    }, can you help me?"`,
-    `I am lost.`,
-    `I need to go to the ${nextSceneA.location} to find my friend ${
-      nextSceneA.newFriend.name
-    }.`,
-    `But I am lost.`,
-    `I am sooooooo sad.`
-  ];
-};
-
 const getNarrative = ({ plot, activeScene, nextSceneA, nextSceneB }) => {
   if (activeScene) {
     activeScene.isVisited = true;
   }
 
   const { you, scenes } = plot;
+
+  if (activeScene.narrative) {
+    return activeScene.narrative({ you, activeScene, nextSceneA });
+  } else {
+    return lostAnimalStory({ you, activeScene, nextSceneA });
+  }
 
   return [
     createHomeStory({ you }),

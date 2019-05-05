@@ -32,6 +32,13 @@ export default class MyList extends React.Component {
   }
 
   renderScene = ({ activeScene }) => {
+    const activeSceneIndex = this.state.page % 2;
+
+    // generate 2 random scenes here.
+    // note, scene is different from narrative
+    //  scene is who and where
+    // narrative is events
+    // const nextSceneA =
     const narrative = getNarrative({
       plot,
       activeScene: activeScene,
@@ -39,10 +46,9 @@ export default class MyList extends React.Component {
       nextSceneB: activeScene
     });
 
-    const nextSceneIndex = this.state.page % 2;
     return (
       narrative &&
-      narrative[nextSceneIndex].map((sentence, i) => {
+      narrative.map((sentence, i) => {
         return (
           <span key={i} className="sentence">
             {sentence}
