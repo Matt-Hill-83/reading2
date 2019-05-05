@@ -38,11 +38,12 @@ export default class MyList extends React.Component {
       nextSceneB: activeScene
     });
 
+    const index = this.state.page % 2;
     return (
       sentences &&
-      sentences[0].map((sentence, i) => {
+      sentences[index].map((sentence, i) => {
         return (
-          <span key={i} className="word sentence">
+          <span key={i} className="sentence">
             {sentence}
           </span>
         );
@@ -73,8 +74,6 @@ export default class MyList extends React.Component {
   };
 
   render() {
-    console.log("render MyList"); // zzz
-
     const { activeScene } = this.state;
 
     const goodAtList = [
@@ -113,6 +112,9 @@ export default class MyList extends React.Component {
                 {this.renderButtons({ activeScene })}
               </div>
               <div className="image-container">
+                <div className="location-header">
+                  {`${this.state.activeScene.location}`}
+                </div>
                 <div className="background-image">
                   <img src={Images.meadow} alt="meadow" />
                   <img

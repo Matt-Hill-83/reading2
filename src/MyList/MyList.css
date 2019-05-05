@@ -1,3 +1,18 @@
+.image-container {
+  border: 1px solid red !important;
+  position: relative;
+}
+
+.location-header {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+
+  font-size: 24px;
+  left: 50%;
+  text-transform: capitalize;
+}
+
 .decision-button-row {
   display: flex;
   justify-content: space-between;
@@ -7,7 +22,6 @@
 }
 
 .choice-button {
-  border: 1px solid green !important;
   display: flex;
   align-items: center;
   flex: 1;
@@ -86,7 +100,6 @@
   width: 100%;
 }
 
-.right,
 .center,
 .left {
   display: flex;
@@ -111,10 +124,9 @@
 .story {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  align-self: stretch;
-
   margin: 24px 0px;
+  align-self: center;
+  margin: auto;
 }
 
 .background-image {
@@ -131,27 +143,8 @@
 }
 
 .sentence {
-  height: 30px;
   display: flex;
   align-items: center;
+
+  font-size: 30px;
 }
-
-/* .word-tools-container {
-  display: flex;
-}
-
-.word-container {
-  display: inline-flex;
-  height: 40px;
-  align-items: center;
-}
-
-
-.word {
-  margin-left: 24px;
-  font-size: 24px;
-}
-
-.favorite-button {
-  margin-left: 24px;
-} */
