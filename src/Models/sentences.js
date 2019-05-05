@@ -18,20 +18,28 @@ const scenes = {
       name: "Crystal"
     },
     buttons: [
-      { label: "click to go to waterfall", nextScene: "waterfall" },
-      { label: "click to go to island", nextScene: "island" }
+      { label: "", nextScene: "waterfall" },
+      { label: "", nextScene: "island" }
     ]
   },
 
   island: {
     location: "island",
     missingItem: "birthday present",
-    newFriend: { type: "unicorn", name: "Sparkle" }
+    newFriend: { type: "unicorn", name: "Sparkle" },
+    buttons: [
+      { label: "", nextScene: "waterfall" },
+      { label: "", nextScene: "home" }
+    ]
   },
   waterfall: {
     location: "waterfall",
     missingItem: "birthday present",
-    newFriend: { type: "fairy", name: "Luna" }
+    newFriend: { type: "fairy", name: "Luna" },
+    buttons: [
+      { label: "", nextScene: "home" },
+      { label: "", nextScene: "island" }
+    ]
   }
 };
 
@@ -50,7 +58,39 @@ const plot = {
   scenes
 };
 
-const makeStory = ({ plot, activeScene }) => {
+const createHomeStory = ({ you }) => {
+  return [
+    `Your name is ${you.name}.`,
+    `You live in the ${you.homeLocation}.`,
+    `You are happy.`,
+    ``,
+    `You have a ${you.vehicle}.`,
+    `Your ${you.vehicle} is fast.`,
+    `Where do you go?`
+  ];
+};
+
+const lostAnimalStory = ({ you, activeScene, nextSceneA }) => {
+  return [
+    `At the ${activeScene.location}, you see a ${activeScene.newFriend.type}`,
+    `The ${activeScene.newFriend.type} is sad.`,
+    `The ${activeScene.newFriend.type} is crying.`,
+    ``,
+    `You say, "Hello ${activeScene.newFriend.type}, my name is ${you.name}"`,
+    `The ${activeScene.newFriend.type} says, "Hello ${
+      you.name
+    }, can you help me?"`,
+    `I am lost.`,
+    `I need to go to the ${nextSceneA.location} to find my friend ${
+      nextSceneA.newFriend.name
+    }.`,
+    ``,
+    `But I am lost.`,
+    `I am sooooooo sad.`
+  ];
+};
+
+const makeStory = ({ plot, activeScene, nextSceneA, nextSceneB }) => {
   if (activeScene) {
     activeScene.isVisited = true;
   }
@@ -58,32 +98,9 @@ const makeStory = ({ plot, activeScene }) => {
   const { you, scenes } = plot;
 
   const story = [
-    [
-      `Your name is ${you.name}.`,
-      `You live in the ${you.homeLocation}.`,
-      `You are happy.`,
-      ``,
-      `You have a ${you.vehicle}.`,
-      `Your ${you.vehicle} is fast.`,
-      `Where do you go on your scooter?`
-    ]
-    // [
-    //   `At the ${scenes[0].location}, you see a ${scenes[0].newFriend.type}`,
-    //   `The ${scenes[0].newFriend.type} is sad.`,
-    //   `The ${scenes[0].newFriend.type} is crying.`,
-    //   ``,
-    //   `You say, "Hello ${scenes[0].newFriend.type}, my name is ${you.name}"`,
-    //   `The ${scenes[0].newFriend.type} says, "Hello ${
-    //     you.name
-    //   }, can you help me?"`,
-    //   `I am lost.`,
-    //   `I need to go to the ${scenes[1].location} to find my friend ${
-    //     scenes[1].newFriend.name
-    //   }.`,
-    //   ``,
-    //   `But I am lost.`,
-    //   `I am sooooooo sad.`
-    // ]
+    createHomeStory({ you }),
+    lostAnimalStory({ you, activeScene, nextSceneA })
+
     // `What should you do?`,
     // ``,
     // `Stay at the ${scenes[0].location}.`,
