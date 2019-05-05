@@ -52,7 +52,8 @@ const scenes = {
       { label: "", nextScene: "waterfall" },
       { label: "", nextScene: "island" }
     ],
-    narrative: createHomeStory
+    narrative: createHomeStory,
+    isHome: true
   },
 
   island: {
@@ -72,6 +73,24 @@ const scenes = {
       { label: "", nextScene: "home" },
       { label: "", nextScene: "island" }
     ]
+  },
+  school: {
+    location: "school",
+    missingItem: "birthday cake",
+    newFriend: { type: "fairy", name: "Luna" },
+    buttons: [
+      { label: "", nextScene: "home" },
+      { label: "", nextScene: "island" }
+    ]
+  },
+  garden: {
+    location: "garden",
+    missingItem: "rose bush",
+    newFriend: { type: "fairy", name: "Luna" },
+    buttons: [
+      { label: "", nextScene: "home" },
+      { label: "", nextScene: "island" }
+    ]
   }
 };
 
@@ -86,7 +105,6 @@ const plot = {
     homeLocation: "forest",
     vehicle: "scooter"
   },
-  // missingItems: ["birthday present", "key", "flower"],
   scenes
 };
 
@@ -102,11 +120,6 @@ const getNarrative = ({ plot, activeScene, nextSceneA, nextSceneB }) => {
   } else {
     return lostAnimalStory({ you, activeScene, nextSceneA });
   }
-
-  return [
-    createHomeStory({ you }),
-    lostAnimalStory({ you, activeScene, nextSceneA })
-  ];
 };
 
 export default { getNarrative, plot };

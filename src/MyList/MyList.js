@@ -32,7 +32,21 @@ export default class MyList extends React.Component {
   }
 
   renderScene = ({ activeScene }) => {
-    const activeSceneIndex = this.state.page % 2;
+    const sceneNames = Object.keys(plot.scenes);
+    console.log("sceneNames", sceneNames); // zzz
+
+    const scenesList = sceneNames.map(name => plot.scenes[name]);
+    const freshScenes = scenesList.filter(scene => {
+      return scene.isVisited === undefined;
+    });
+    console.log("freshScenes", freshScenes); // zzz
+
+    // TODO
+    // TODO
+    // TODO
+    // TODO
+    // choose next scenes from freshScenes list and assign them to buttons
+    // create map that shows visited places
 
     // generate 2 random scenes here.
     // note, scene is different from narrative
@@ -46,7 +60,7 @@ export default class MyList extends React.Component {
       nextSceneB: activeScene
     });
 
-    return (
+    const renderedPage =
       narrative &&
       narrative.map((sentence, i) => {
         return (
@@ -54,13 +68,20 @@ export default class MyList extends React.Component {
             {sentence}
           </span>
         );
-      })
+      });
+
+    return (
+      <React.Fragment>
+        {renderedPage}
+        {this.renderButtons({ activeScene })}
+      </React.Fragment>
     );
   };
 
+  // buttons should be randomly derived from the nextScenes
   renderButtons = ({ activeScene }) => {
     const buttons = activeScene.buttons.map((button, i) => {
-      const onClick = ({}) => {
+      const onClick = () => {
         this.setState({
           activeScene: plot.scenes[button.nextScene],
           page: this.state.page + 1
@@ -117,7 +138,7 @@ export default class MyList extends React.Component {
               <div className="text-page">
                 <div className="page-number">{`Page ${this.state.page}`}</div>
                 <div className="story">{this.renderScene({ activeScene })}</div>
-                {this.renderButtons({ activeScene })}
+                {/* {this.renderButtons({ activeScene })} */}
               </div>
               <div className="image-container">
                 <div className="location-header">
