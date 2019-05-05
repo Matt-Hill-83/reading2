@@ -75,7 +75,6 @@ const lostAnimalStory = ({ you, activeScene, nextSceneA }) => {
     `At the ${activeScene.location}, you see a ${activeScene.newFriend.type}`,
     `The ${activeScene.newFriend.type} is sad.`,
     `The ${activeScene.newFriend.type} is crying.`,
-    ``,
     `You say, "Hello ${activeScene.newFriend.type}, my name is ${you.name}"`,
     `The ${activeScene.newFriend.type} says, "Hello ${
       you.name
@@ -84,7 +83,6 @@ const lostAnimalStory = ({ you, activeScene, nextSceneA }) => {
     `I need to go to the ${nextSceneA.location} to find my friend ${
       nextSceneA.newFriend.name
     }.`,
-    ``,
     `But I am lost.`,
     `I am sooooooo sad.`
   ];
