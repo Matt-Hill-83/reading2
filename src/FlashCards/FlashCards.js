@@ -20,6 +20,13 @@ export default class FlashCards extends React.Component {
     this.setState({ words });
   }
 
+  favoriteWord = ({ word }) => {
+    word.isFavorite = !word.isFavorite;
+    const words = this.state.words;
+
+    this.setState({ words });
+  };
+
   renderFlashCards = ({ words }) => {
     const renderedFlashCards = words.map((word, i) => {
       const iconColor = word.isFavorite ? "purple" : "pink";

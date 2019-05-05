@@ -26,17 +26,14 @@ export default class MyList extends React.Component {
   };
 
   async componentDidMount() {
-    // const sentences = makeStory({ words, plot });
-    // this.setState({ words, sentences });
     this.setState({ words, activeScene: plot.activeScene });
   }
 
   renderSentences = () => {
     const sentences = makeStory({ words, plot });
-    const renderedSentences = sentences[0].map((sentence, i) => {
+    return sentences[0].map((sentence, i) => {
       return <span key={i} className="word sentence">{`${sentence}`}</span>;
     });
-    return renderedSentences;
   };
 
   // renderButtons = () => {
@@ -45,13 +42,6 @@ export default class MyList extends React.Component {
   //   });
   //   return buttons;
   // };
-
-  favoriteWord = ({ word }) => {
-    word.isFavorite = !word.isFavorite;
-    const words = this.state.words;
-
-    this.setState({ words });
-  };
 
   newStory = () => {
     makeStory({ words: this.state.words });
@@ -81,15 +71,17 @@ export default class MyList extends React.Component {
       </Button>
     );
 
+    console.log("this.state", this.state); // zzz
+
     return (
       <div className="main">
         <span className="header banner">
           {`Girls are good at...    ${goodAt}!`}
-
           {toggleButton}
         </span>
+
         <div className="body">
-          {!this.state.showStory && <FlashCards words={this.state.words} />}
+          {!this.state.showStory && <FlashCards />}
           {this.state.showStory && (
             <div className="right">
               {/* <SketchPicker /> */}
