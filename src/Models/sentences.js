@@ -1,5 +1,5 @@
-import myWords from "./words.js";
-import Utils from "./utils.js";
+import myWords from "../Models/words.js";
+import Utils from "../Utils/Utils.js";
 
 const { words, wordTypes } = myWords;
 
@@ -16,7 +16,11 @@ const scenes = {
         type: wordTypes.creature
       }),
       name: "Crystal"
-    }
+    },
+    buttons: [
+      { label: "click to go to waterfall", nextScene: "waterfall" },
+      { label: "click to go to island", nextScene: "island" }
+    ]
   },
 
   island: {
@@ -31,20 +35,22 @@ const scenes = {
   }
 };
 
+const startScene = scenes.home;
+
 const plot = {
   scenesHistory: [],
-  currentScene: scenes.home,
+  currentScene: startScene,
   you: {
     name: "Priana",
     creature: "girl",
     homeLocation: "forest",
     vehicle: "scooter"
   },
-  missingItems: ["birthday present", "key", "flower"],
+  // missingItems: ["birthday present", "key", "flower"],
   scenes
 };
 
-const makeStory = ({ plot }) => {
+const makeStory = ({ plot, activeScene }) => {
   const { you, scenes } = plot;
 
   const story = [

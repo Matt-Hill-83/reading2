@@ -4,11 +4,13 @@ import { Button, Icon, Tab, Tabs } from "@blueprintjs/core";
 // import { SketchPicker } from "react-color";
 // import { observer } from "mobx-react";
 
-import Utils from "./utils.js";
+import Utils from "../Utils/Utils.js";
 import Images from "../images/images.js";
 
-import myWords from "./words.js";
-import mySentences from "./sentences.js";
+import myWords from "../Models/words.js";
+import mySentences from "../Models/sentences.js";
+
+import FlashCards from "../FlashCards/FlashCards";
 
 import "./MyList.css";
 
@@ -19,53 +21,36 @@ export default class MyList extends React.Component {
   state = {
     activeTab: wordTypes["name"],
     sentences: [],
-    showStory: true
+    showStory: true,
+    activeScene: undefined
   };
 
   async componentDidMount() {
-    const sentences = makeStory({ words, plot: plot });
-    this.setState({ words, sentences });
+    // const sentences = makeStory({ words, plot });
+    // this.setState({ words, sentences });
+    this.setState({ words, activeScene: plot.activeScene });
   }
 
   renderSentences = () => {
-    const sentences = this.state.sentences[0].map((sentence, i) => {
+    const sentences = makeStory({ words, plot });
+    const renderedSentences = sentences[0].map((sentence, i) => {
       return <span key={i} className="word sentence">{`${sentence}`}</span>;
     });
-    return sentences;
+    return renderedSentences;
   };
+
+  // renderButtons = () => {
+  //   const buttons = this.state.buttons[0].map((sentence, i) => {
+  //     return <span key={i} className="word sentence">{`${sentence}`}</span>;
+  //   });
+  //   return buttons;
+  // };
 
   favoriteWord = ({ word }) => {
     word.isFavorite = !word.isFavorite;
     const words = this.state.words;
 
     this.setState({ words });
-  };
-
-  renderFlashCards = ({ words }) => {
-    const renderedFlashCards = words.map((word, i) => {
-      const iconColor = word.isFavorite ? "purple" : "pink";
-      return (
-        <div key={i} className="word-tools-container">
-          <Button
-            className="favorite-button"
-            onClick={() => this.favoriteWord({ word })}
-          >
-            <Icon color={iconColor} icon={IconNames.STAR} />
-          </Button>
-          <Button
-            className="include-button"
-            onClick={() => this.favoriteWord({ word })}
-          >
-            <Icon color={iconColor} icon={IconNames.BADGE} />
-          </Button>
-          <div className="word-container">
-            <span className="word">{` ${word.name}`}</span>
-          </div>
-        </div>
-      );
-    });
-
-    return renderedFlashCards;
   };
 
   newStory = () => {
@@ -79,21 +64,6 @@ export default class MyList extends React.Component {
       return null;
     }
 
-    const renderedPanels = Object.keys(wordTypes).map((type, i) => {
-      const wordsNoFavorites = Utils.removeFavorites(
-        Utils.getWordsByType({ words, type })
-      );
-
-      return (
-        <Tab
-          key={i}
-          id={type}
-          title={type}
-          panel={this.renderFlashCards({ words: wordsNoFavorites })}
-        />
-      );
-    });
-
     const goodAtList = [
       "math",
       "reading",
@@ -102,6 +72,7 @@ export default class MyList extends React.Component {
       "school",
       "jumping"
     ];
+
     const goodAt = Utils.getRandomItem({ items: goodAtList });
 
     const toggleButton = (
@@ -118,33 +89,13 @@ export default class MyList extends React.Component {
           {toggleButton}
         </span>
         <div className="body">
-          {!this.state.showStory && (
-            <div className="left">
-              <span className="header">Flash Cards</span>
-
-              <Tabs id="TabsExample">{renderedPanels}</Tabs>
-            </div>
-          )}
-          {!this.state.showStory && (
-            <div className="center">
-              <span className="header">
-                {`Words I Can Read --- ${
-                  Utils.getWordsByFavorite({ words }).length
-                }`}
-              </span>
-
-              {this.renderFlashCards({
-                words: Utils.getWordsByFavorite({ words })
-              })}
-            </div>
-          )}
-
+          {!this.state.showStory && <FlashCards words={this.state.words} />}
           {this.state.showStory && (
             <div className="right">
               {/* <SketchPicker /> */}
-              {/* <span className="header">Story</span> */}
               <div className="story-box">
                 <div className="story">{this.renderSentences()}</div>
+                {/* <div className="story">{this.renderButtons()}</div> */}
                 <div className="image-container">
                   <div className="background-image">
                     <img src={Images.meadow} alt="meadow" />
