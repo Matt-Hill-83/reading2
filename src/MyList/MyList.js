@@ -27,39 +27,42 @@ export default class MyList extends React.Component {
   };
 
   async componentWillMount() {
-    console.log("plot", plot); // zzz
+    const activeScene = plot.activeScene;
 
-    this.setState({ activeScene: plot.activeScene });
+    this.updateActiveScene({ activeScene });
   }
 
+  updateActiveScene = ({ activeScene }) => {
+    activeScene.isUsed = true;
+
+    const scenes = plot.scenes;
+    const scenesList = Object.values(scenes) || [];
+
+    Utils.unreserveItems({ items: scenesList });
+
+    const sceneOptionA = Utils.reserveRandomItem({ items: scenesList });
+    console.log("sceneOptionA+++++++++++++++++", sceneOptionA.location); // zzz
+    const sceneOptionB = Utils.reserveRandomItem({ items: scenesList });
+    console.log("sceneOptionB", sceneOptionB.location); // zzz
+
+    this.setState({
+      activeScene,
+      sceneOptionA,
+      sceneOptionB,
+      page: this.state.page + 1
+    });
+  };
+
   renderScene = ({ activeScene }) => {
-    // TODO
-    // TODO
-    // TODO
-    // TODO
-    // choose next scenes from freshScenes list and assign them to buttons
-    // create map that shows visited places
-    // create an image for each scene
-
-    // generate 2 random scenes here.
-    // note, scene is different from narrative
-    //  scene is who and where
-    // narrative is events
-    // const nextSceneA =
-
-    if (activeScene) {
-      activeScene.isVisited = true;
-    }
-
-    const scenesList = Object.values(plot.scenes) || [];
-    const notVisitedScenes = scenesList.filter(scene => !scene.isVisited);
-    console.log("notVisitedScenes.location", notVisitedScenes); // zzz
+    console.log(
+      "render scene --------------------------------------------------"
+    ); // zzz
 
     return (
       <React.Fragment>
-        {this.renderSceneList({ activeScene })}
-        {this.renderNarrative({ activeScene })}
-        {this.renderButtons({ activeScene })}
+        {this.renderSceneList({ activeScene: this.state.activeScene })}
+        {this.renderNarrative({ activeScene: this.state.activeScene })}
+        {this.renderButtons({ activeScene: this.state.activeScene })}
       </React.Fragment>
     );
   };
@@ -68,8 +71,8 @@ export default class MyList extends React.Component {
     const narrative = getNarrative({
       plot,
       activeScene: activeScene,
-      nextSceneA: activeScene,
-      nextSceneB: activeScene
+      sceneOptionA: activeScene,
+      sceneOptionB: activeScene
     });
 
     const renderedNarrative =
@@ -87,10 +90,9 @@ export default class MyList extends React.Component {
 
   renderSceneList = ({}) => {
     const scenesList = Object.values(plot.scenes);
-    console.log("scenesList", scenesList); // zzz
 
     const renderedScenes = scenesList.map((scene, index) => {
-      const iconColor = scene.isVisited ? "purple" : "blue";
+      const iconColor = scene.isUsed ? "purple" : "blue";
       return (
         <div key={index}>
           <Icon color={iconColor} icon={IconNames.WALK} />
@@ -101,15 +103,26 @@ export default class MyList extends React.Component {
     return <div className="scene-list">{renderedScenes}</div> || null;
   };
 
+  changeScene = ({ button }) => {
+    const activeScene = plot.scenes[button.nextScene];
+    this.updateActiveScene({ activeScene });
+
+    // this.setState({
+    //   activeScene,
+    //   page: this.state.page + 1
+    // });
+  };
+
   // buttons should be randomly derived from the nextScenes
   renderButtons = ({ activeScene }) => {
     const buttons = activeScene.buttons.map((button, i) => {
-      const onClick = () => {
-        this.setState({
-          activeScene: plot.scenes[button.nextScene],
-          page: this.state.page + 1
-        });
-      };
+      const onClick = () => this.changeScene({ button });
+      // const onClick = () => {
+      //   this.setState({
+      //     activeScene: plot.scenes[button.nextScene],
+      //     page: this.state.page + 1
+      //   });
+      // };
 
       return (
         <Button key={i} onClick={onClick} className="choice-button">{`Go To ${
@@ -192,7 +205,8 @@ export default class MyList extends React.Component {
   };
 
   render() {
-    console.log("this.state", this.state); // zzz
+    // console.log("this.state", this.state); // zzz
+    console.log("renderMain"); // zzz
 
     return (
       // <div className={css.test}>

@@ -13,6 +13,18 @@ export default class Utils {
   static getRandomItem = ({ items }) =>
     items[Math.floor(Math.random() * items.length)];
 
+  static reserveRandomItem = ({ items }) => {
+    const freshItems = items.filter(item => !item.isUsed && !item.isReserved);
+
+    const item = this.getRandomItem({ items: freshItems });
+    item.isReserved = true;
+    return item;
+  };
+
+  static unreserveItems = ({ items }) => {
+    items && items.forEach(item => (item.isReserved = false));
+  };
+
   static getRandomWordByType = ({ words, type }) => {
     const output = this.getWordsByType({ words, type }).map(word => word.name);
 

@@ -16,7 +16,7 @@ const createHomeStory = ({ you }) => {
   ];
 };
 
-const lostAnimalStory = ({ you, activeScene, nextSceneA }) => {
+const lostAnimalStory = ({ you, activeScene, sceneOptionA }) => {
   return [
     `At the ${activeScene.location}, you see a ${activeScene.newFriend.type}`,
     `The ${activeScene.newFriend.type} is sad.`,
@@ -26,8 +26,8 @@ const lostAnimalStory = ({ you, activeScene, nextSceneA }) => {
       you.name
     }, can you help me?"`,
     `I am lost.`,
-    `I need to go to the ${nextSceneA.location} to find my friend ${
-      nextSceneA.newFriend.name
+    `I need to go to the ${sceneOptionA.location} to find my friend ${
+      sceneOptionA.newFriend.name
     }.`,
     `But I am lost.`,
     `I am sooooooo sad.`
@@ -109,17 +109,13 @@ const plot = {
   scenes
 };
 
-const getNarrative = ({ plot, activeScene, nextSceneA, nextSceneB }) => {
-  // if (activeScene) {
-  //   activeScene.isVisited = true;
-  // }
-
-  const { you, scenes } = plot;
+const getNarrative = ({ plot, activeScene, sceneOptionA, sceneOptionB }) => {
+  const { you } = plot;
 
   if (activeScene.narrative) {
-    return activeScene.narrative({ you, activeScene, nextSceneA });
+    return activeScene.narrative({ you, activeScene, sceneOptionA });
   } else {
-    return lostAnimalStory({ you, activeScene, nextSceneA });
+    return lostAnimalStory({ you, activeScene, sceneOptionA });
   }
 };
 
