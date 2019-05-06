@@ -164,7 +164,7 @@ export default class MyList extends React.Component {
           {`${this.state.activeScene.location}`}
         </div>
         <div className="background-image">
-          <img src={renderedImage} alt={"image"} />
+          <img className="background-image" src={renderedImage} alt={"image"} />
           <img
             className="character-image character1"
             src={Images.unicorn}

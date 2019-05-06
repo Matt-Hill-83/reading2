@@ -145,10 +145,13 @@
 }
 
 .background-image {
+  border: 3px solid var(--color-purple) !important;
   display: flex;
+  flex: 1;
 
   position: relative;
-  max-width: 100%;
+  // max-width: 100%;
+  max-width: 800px;
   height: auto;
   max-height: 600px;
 }
