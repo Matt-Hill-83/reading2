@@ -16,7 +16,7 @@ import FlashCards from "../FlashCards/FlashCards";
 import "./MyList.scss";
 
 const { getNarrative, plot } = mySentences;
-const { words, wordTypes } = myWords;
+const { wordTypes } = myWords;
 
 export default class MyList extends React.Component {
   state = {
@@ -41,9 +41,7 @@ export default class MyList extends React.Component {
     Utils.unreserveItems({ items: scenesList });
 
     const sceneOptionA = Utils.reserveRandomItem({ items: scenesList });
-    console.log("sceneOptionA+++++++++++++++++", sceneOptionA.location); // zzz
     const sceneOptionB = Utils.reserveRandomItem({ items: scenesList });
-    console.log("sceneOptionB", sceneOptionB.location); // zzz
 
     this.setState({
       activeScene,
@@ -53,7 +51,7 @@ export default class MyList extends React.Component {
     });
   };
 
-  renderScene = ({ activeScene }) => {
+  renderScene = () => {
     console.log(
       "render scene --------------------------------------------------"
     ); // zzz
@@ -103,30 +101,23 @@ export default class MyList extends React.Component {
     return <div className="scene-list">{renderedScenes}</div> || null;
   };
 
-  changeScene = ({ button }) => {
-    const activeScene = plot.scenes[button.nextScene];
-    this.updateActiveScene({ activeScene });
-
-    // this.setState({
-    //   activeScene,
-    //   page: this.state.page + 1
-    // });
+  changeScene = ({ scene }) => {
+    this.updateActiveScene({ activeScene: scene });
   };
 
   // buttons should be randomly derived from the nextScenes
   renderButtons = ({ activeScene }) => {
-    const buttons = activeScene.buttons.map((button, i) => {
-      const onClick = () => this.changeScene({ button });
-      // const onClick = () => {
-      //   this.setState({
-      //     activeScene: plot.scenes[button.nextScene],
-      //     page: this.state.page + 1
-      //   });
-      // };
+    const options = [this.state.sceneOptionA, this.state.sceneOptionB];
+    const buttons = options.map((scene, i) => {
+      if (!scene) {
+        return null;
+      }
+
+      const onClick = () => this.changeScene({ scene });
 
       return (
         <Button key={i} onClick={onClick} className="choice-button">{`Go To ${
-          button.nextScene
+          scene.location
         }`}</Button>
       );
     });
@@ -190,7 +181,7 @@ export default class MyList extends React.Component {
     return (
       <div className="text-page">
         <div className="page-number">{`Page ${this.state.page}`}</div>
-        <div className="story">{this.renderScene({ activeScene })}</div>
+        <div className="story">{this.renderScene()}</div>
       </div>
     );
   };
@@ -205,9 +196,6 @@ export default class MyList extends React.Component {
   };
 
   render() {
-    // console.log("this.state", this.state); // zzz
-    console.log("renderMain"); // zzz
-
     return (
       // <div className={css.test}>
       <div className="main">

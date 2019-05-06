@@ -16,6 +16,11 @@ export default class Utils {
   static reserveRandomItem = ({ items }) => {
     const freshItems = items.filter(item => !item.isUsed && !item.isReserved);
 
+    // When all the items are used
+    if (freshItems.length === 0) {
+      return;
+    }
+
     const item = this.getRandomItem({ items: freshItems });
     item.isReserved = true;
     return item;
