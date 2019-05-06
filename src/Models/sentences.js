@@ -36,10 +36,11 @@ const lostAnimalStory = ({ you, activeScene, nextSceneA }) => {
 
 const scenes = {
   home: {
-    location: Utils.getRandomWordByType({
-      words,
-      type: wordTypes.location
-    }),
+    location: "home",
+    // location: Utils.getRandomWordByType({
+    //   words,
+    //   type: wordTypes.location
+    // }),
     missingItem: "birthday present",
     newFriend: {
       type: Utils.getRandomWordByType({

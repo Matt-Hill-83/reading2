@@ -1,5 +1,6 @@
 import React from "react";
-import { Button } from "@blueprintjs/core";
+import { IconNames } from "@blueprintjs/icons";
+import { Button, Icon, Tab, Tabs } from "@blueprintjs/core";
 // import { SketchPicker } from "react-color";
 // import { observer } from "mobx-react";
 
@@ -32,21 +33,13 @@ export default class MyList extends React.Component {
   }
 
   renderScene = ({ activeScene }) => {
-    const sceneNames = Object.keys(plot.scenes);
-    console.log("sceneNames", sceneNames); // zzz
-
-    const scenesList = sceneNames.map(name => plot.scenes[name]);
-    const freshScenes = scenesList.filter(scene => {
-      return scene.isVisited === undefined;
-    });
-    console.log("freshScenes", freshScenes); // zzz
-
     // TODO
     // TODO
     // TODO
     // TODO
     // choose next scenes from freshScenes list and assign them to buttons
     // create map that shows visited places
+    // create an image for each scene
 
     // generate 2 random scenes here.
     // note, scene is different from narrative
@@ -74,8 +67,28 @@ export default class MyList extends React.Component {
       <React.Fragment>
         {renderedPage}
         {this.renderButtons({ activeScene })}
+        {this.renderSceneList({ activeScene })}
       </React.Fragment>
     );
+  };
+
+  renderSceneList = ({}) => {
+    const sceneNames = Object.keys(plot.scenes);
+    console.log("sceneNames", sceneNames); // zzz
+    // return sceneNames;
+
+    const scenesList = sceneNames.map(name => plot.scenes[name]);
+
+    const freshScenes = scenesList.map((scene, index) => {
+      return (
+        <div key={index}>
+          {scene.location}
+          {scene.isVisited}
+        </div>
+      );
+    });
+    console.log("freshScenes", freshScenes); // zzz
+    return freshScenes || null;
   };
 
   // buttons should be randomly derived from the nextScenes
