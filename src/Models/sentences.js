@@ -49,10 +49,6 @@ const scenes = {
       }),
       name: "Crystal"
     },
-    buttons: [
-      { label: "", nextScene: "waterfall" },
-      { label: "", nextScene: "island" }
-    ],
     narrative: createHomeStory,
     isHome: true
   },
@@ -60,38 +56,22 @@ const scenes = {
   island: {
     location: "island",
     missingItem: "birthday present",
-    newFriend: { type: "unicorn", name: "Sparkle" },
-    buttons: [
-      { label: "", nextScene: "waterfall" },
-      { label: "", nextScene: "home" }
-    ]
+    newFriend: { type: "unicorn", name: "Sparkle" }
   },
   waterfall: {
     location: "waterfall",
     missingItem: "birthday present",
-    newFriend: { type: "fairy", name: "Luna" },
-    buttons: [
-      { label: "", nextScene: "home" },
-      { label: "", nextScene: "island" }
-    ]
+    newFriend: { type: "fairy", name: "Luna" }
   },
   school: {
     location: "school",
     missingItem: "birthday cake",
-    newFriend: { type: "fairy", name: "Luna" },
-    buttons: [
-      { label: "", nextScene: "home" },
-      { label: "", nextScene: "island" }
-    ]
+    newFriend: { type: "fairy", name: "Luna" }
   },
   garden: {
     location: "garden",
     missingItem: "rose bush",
-    newFriend: { type: "fairy", name: "Luna" },
-    buttons: [
-      { label: "", nextScene: "home" },
-      { label: "", nextScene: "island" }
-    ]
+    newFriend: { type: "fairy", name: "Luna" }
   }
 };
 

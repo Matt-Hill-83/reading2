@@ -58,7 +58,7 @@ export default class MyList extends React.Component {
 
     return (
       <React.Fragment>
-        {this.renderSceneList({ activeScene: this.state.activeScene })}
+        {this.renderSceneList()}
         {this.renderNarrative({ activeScene: this.state.activeScene })}
         {this.renderButtons({ activeScene: this.state.activeScene })}
       </React.Fragment>
@@ -86,7 +86,7 @@ export default class MyList extends React.Component {
     return <div className="narrative">{renderedNarrative}</div>;
   };
 
-  renderSceneList = ({}) => {
+  renderSceneList = () => {
     const scenesList = Object.values(plot.scenes);
 
     const renderedScenes = scenesList.map((scene, index) => {
