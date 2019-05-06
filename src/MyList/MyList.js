@@ -154,13 +154,17 @@ export default class MyList extends React.Component {
   };
 
   renderPicturePage = () => {
+    const activeScene = this.state.activeScene;
+    const defaultImage = "waterfall";
+    const renderedImage = Images[activeScene.location] || Images[defaultImage];
+
     return (
       <div className="image-container">
         <div className="location-header">
           {`${this.state.activeScene.location}`}
         </div>
         <div className="background-image">
-          <img src={Images.meadow} alt="meadow" />
+          <img src={renderedImage} alt={"image"} />
           <img
             className="character-image character1"
             src={Images.unicorn}

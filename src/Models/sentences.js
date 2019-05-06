@@ -15,7 +15,35 @@ const createHomeStory = ({ you }) => {
   ];
 };
 
-const lostAnimalStory = ({ you, activeScene, sceneOptionA }) => {
+const lostCreatureStory = ({ you, activeScene, sceneOptionA }) => {
+  return [
+    `At the ${activeScene.location}, you see a ${activeScene.newFriend.type}`,
+    `The ${activeScene.newFriend.type} is sad.`,
+    `The ${activeScene.newFriend.type} is crying.`,
+    `You say, "Hello ${activeScene.newFriend.type}, my name is ${you.name}"`,
+    `The ${activeScene.newFriend.type} says, "Hello ${
+      you.name
+    }, can you help me?"`,
+    `I lost my ${activeScene.missingItem}.`,
+    `Can you help me?"`,
+
+    `I am sooooooo sad.`
+  ];
+};
+
+const birthdayPartyStory = ({ you, activeScene, sceneOptionA }) => {
+  return [
+    `At the ${activeScene.location}, you see a ${activeScene.newFriend.type}`,
+    `The ${activeScene.newFriend.type} is sad.`,
+    `The ${activeScene.newFriend.type} is crying.`,
+    `You say, "Hello ${activeScene.newFriend.type}, my name is ${you.name}"`,
+    `The ${activeScene.newFriend.type} says, "Hello ${you.name}?"`,
+    `I need to go to a birthday party.`,
+    `I am sooooooo mad.`
+  ];
+};
+
+const lostThingStory = ({ you, activeScene, sceneOptionA }) => {
   return [
     `At the ${activeScene.location}, you see a ${activeScene.newFriend.type}`,
     `The ${activeScene.newFriend.type} is sad.`,
@@ -48,8 +76,8 @@ const scenes = {
     isHome: true
   },
 
-  island: {
-    location: "island",
+  meadow: {
+    location: "meadow",
     missingItem: "birthday present",
     newFriend: { type: "unicorn", name: "Sparkle" }
   },
@@ -83,13 +111,17 @@ const plot = {
   scenes
 };
 
+const stories = [lostThingStory, lostCreatureStory, birthdayPartyStory];
+
 const getNarrative = ({ plot, activeScene, sceneOptionA, sceneOptionB }) => {
   const { you } = plot;
 
   if (activeScene.narrative) {
     return activeScene.narrative({ you, activeScene, sceneOptionA });
   } else {
-    return lostAnimalStory({ you, activeScene, sceneOptionA });
+    const story = Utils.getRandomItem({ items: stories });
+    return story({ you, activeScene, sceneOptionA });
+    // return lostCreatureStory({ you, activeScene, sceneOptionA });
   }
 };
 

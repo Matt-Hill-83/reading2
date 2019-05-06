@@ -1,5 +1,7 @@
-import fairy from "./fairy-1.png";
 import meadow from "./meadow.jpg";
+import waterfall from "./waterfall-1.jpg";
+
+import fairy from "./fairy-1.png";
 import unicorn from "./unicorn-1.png";
 
-export default { fairy, meadow, unicorn };
+export default { fairy, meadow, unicorn, waterfall };
