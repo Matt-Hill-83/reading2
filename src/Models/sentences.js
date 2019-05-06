@@ -110,9 +110,9 @@ const plot = {
 };
 
 const getNarrative = ({ plot, activeScene, nextSceneA, nextSceneB }) => {
-  if (activeScene) {
-    activeScene.isVisited = true;
-  }
+  // if (activeScene) {
+  //   activeScene.isVisited = true;
+  // }
 
   const { you, scenes } = plot;
 

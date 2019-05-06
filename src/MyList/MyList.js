@@ -47,7 +47,13 @@ export default class MyList extends React.Component {
     // narrative is events
     // const nextSceneA =
 
-    // const notVisitedScenes =
+    if (activeScene) {
+      activeScene.isVisited = true;
+    }
+
+    const scenesList = Object.values(plot.scenes) || [];
+    const notVisitedScenes = scenesList.filter(scene => !scene.isVisited);
+    console.log("notVisitedScenes.location", notVisitedScenes); // zzz
 
     return (
       <React.Fragment>
@@ -80,10 +86,10 @@ export default class MyList extends React.Component {
   };
 
   renderSceneList = ({}) => {
-    const sceneNames = Object.keys(plot.scenes);
-    const scenesList = sceneNames.map(name => plot.scenes[name]);
+    const scenesList = Object.values(plot.scenes);
+    console.log("scenesList", scenesList); // zzz
 
-    const freshScenes = scenesList.map((scene, index) => {
+    const renderedScenes = scenesList.map((scene, index) => {
       const iconColor = scene.isVisited ? "purple" : "blue";
       return (
         <div key={index}>
@@ -92,7 +98,7 @@ export default class MyList extends React.Component {
         </div>
       );
     });
-    return <div className="scene-list">{freshScenes}</div> || null;
+    return <div className="scene-list">{renderedScenes}</div> || null;
   };
 
   // buttons should be randomly derived from the nextScenes
