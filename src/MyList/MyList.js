@@ -1,6 +1,6 @@
 import React from "react";
 import { IconNames } from "@blueprintjs/icons";
-import { Button, Icon, Tab, Tabs } from "@blueprintjs/core";
+import { Button, Icon } from "@blueprintjs/core";
 // import { SketchPicker } from "react-color";
 // import { observer } from "mobx-react";
 
@@ -46,6 +46,17 @@ export default class MyList extends React.Component {
     //  scene is who and where
     // narrative is events
     // const nextSceneA =
+
+    return (
+      <React.Fragment>
+        {this.renderNarrative({ activeScene })}
+        {this.renderButtons({ activeScene })}
+        {this.renderSceneList({ activeScene })}
+      </React.Fragment>
+    );
+  };
+
+  renderNarrative = ({ activeScene }) => {
     const narrative = getNarrative({
       plot,
       activeScene: activeScene,
@@ -53,7 +64,7 @@ export default class MyList extends React.Component {
       nextSceneB: activeScene
     });
 
-    const renderedPage =
+    const renderedNarrative =
       narrative &&
       narrative.map((sentence, i) => {
         return (
@@ -63,32 +74,23 @@ export default class MyList extends React.Component {
         );
       });
 
-    return (
-      <React.Fragment>
-        {renderedPage}
-        {this.renderButtons({ activeScene })}
-        {this.renderSceneList({ activeScene })}
-      </React.Fragment>
-    );
+    return <div className="narrative">{renderedNarrative}</div>;
   };
 
   renderSceneList = ({}) => {
     const sceneNames = Object.keys(plot.scenes);
-    console.log("sceneNames", sceneNames); // zzz
-    // return sceneNames;
-
     const scenesList = sceneNames.map(name => plot.scenes[name]);
 
     const freshScenes = scenesList.map((scene, index) => {
+      const iconColor = scene.isVisited ? "purple" : "blue";
       return (
         <div key={index}>
+          <Icon color={iconColor} icon={IconNames.WALK} />
           {scene.location}
-          {scene.isVisited}
         </div>
       );
     });
-    console.log("freshScenes", freshScenes); // zzz
-    return freshScenes || null;
+    return <div className="scene-list">{freshScenes}</div> || null;
   };
 
   // buttons should be randomly derived from the nextScenes
@@ -114,9 +116,7 @@ export default class MyList extends React.Component {
     this.setState({ showStory: !this.state.showStory });
   };
 
-  render() {
-    const { activeScene } = this.state;
-
+  renderGirlsAreGoodAt = () => {
     const goodAtList = [
       "math",
       "reading",
@@ -125,7 +125,6 @@ export default class MyList extends React.Component {
       "school",
       "jumping"
     ];
-
     const goodAt = Utils.getRandomItem({ items: goodAtList });
 
     const toggleButton = (
@@ -134,16 +133,23 @@ export default class MyList extends React.Component {
       </Button>
     );
 
+    return (
+      <span className="header banner">
+        {`Girls are good at...    ${goodAt}!`}
+        {toggleButton}
+      </span>
+    );
+  };
+
+  render() {
+    const { activeScene } = this.state;
+
     console.log("this.state", this.state); // zzz
 
     return (
       // <div className={css.test}>
       <div className="main">
-        <span className="header banner">
-          {`Girls are good at...    ${goodAt}!`}
-          {toggleButton}
-        </span>
-
+        {this.renderGirlsAreGoodAt()}
         <div className="body">
           {!this.state.showStory && <FlashCards />}
           {this.state.showStory && (
@@ -151,7 +157,6 @@ export default class MyList extends React.Component {
               <div className="text-page">
                 <div className="page-number">{`Page ${this.state.page}`}</div>
                 <div className="story">{this.renderScene({ activeScene })}</div>
-                {/* {this.renderButtons({ activeScene })} */}
               </div>
               <div className="image-container">
                 <div className="location-header">

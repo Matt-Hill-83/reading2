@@ -1,7 +1,14 @@
-.test {
-  border: 10px solid red;
+.scene-list {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 }
 
+.narrative {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
 .main {
   --color-blue: blue;
   --color-blue-light: #00ade4;
@@ -134,8 +141,8 @@
   display: flex;
   flex-direction: column;
   margin: 24px 0px;
-  align-self: center;
-  margin: auto;
+  /* align-self: stretch; */
+  /* margin: auto; */
 }
 
 .background-image {
