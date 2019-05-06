@@ -177,7 +177,6 @@ export default class MyList extends React.Component {
   };
 
   renderWordPage = () => {
-    const { activeScene } = this.state;
     return (
       <div className="text-page">
         <div className="page-number">{`Page ${this.state.page}`}</div>

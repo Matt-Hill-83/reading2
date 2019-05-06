@@ -9,7 +9,6 @@ const createHomeStory = ({ you }) => {
     `Your name is ${you.name}.`,
     `You live in the ${you.homeLocation}.`,
     `You are happy.`,
-    ``,
     `You have a ${you.vehicle}.`,
     `Your ${you.vehicle} is fast.`,
     `Where do you go?`
@@ -37,10 +36,6 @@ const lostAnimalStory = ({ you, activeScene, sceneOptionA }) => {
 const scenes = {
   home: {
     location: "home",
-    // location: Utils.getRandomWordByType({
-    //   words,
-    //   type: wordTypes.location
-    // }),
     missingItem: "birthday present",
     newFriend: {
       type: Utils.getRandomWordByType({
@@ -78,7 +73,6 @@ const scenes = {
 const startScene = scenes.home;
 
 const plot = {
-  scenesHistory: [],
   activeScene: startScene,
   you: {
     name: "Priana",
