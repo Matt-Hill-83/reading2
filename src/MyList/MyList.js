@@ -47,11 +47,13 @@ export default class MyList extends React.Component {
     // narrative is events
     // const nextSceneA =
 
+    // const notVisitedScenes =
+
     return (
       <React.Fragment>
+        {this.renderSceneList({ activeScene })}
         {this.renderNarrative({ activeScene })}
         {this.renderButtons({ activeScene })}
-        {this.renderSceneList({ activeScene })}
       </React.Fragment>
     );
   };
@@ -141,6 +143,29 @@ export default class MyList extends React.Component {
     );
   };
 
+  renderPicture = () => {
+    return (
+      <div className="image-container">
+        <div className="location-header">
+          {`${this.state.activeScene.location}`}
+        </div>
+        <div className="background-image">
+          <img src={Images.meadow} alt="meadow" />
+          <img
+            className="character-image character1"
+            src={Images.unicorn}
+            alt="unicorn"
+          />
+          <img
+            className="character-image character2"
+            src={Images.fairy}
+            alt="fairy"
+          />
+        </div>
+      </div>
+    );
+  };
+
   renderStory = () => {
     const { activeScene } = this.state;
 
@@ -150,24 +175,7 @@ export default class MyList extends React.Component {
           <div className="page-number">{`Page ${this.state.page}`}</div>
           <div className="story">{this.renderScene({ activeScene })}</div>
         </div>
-        <div className="image-container">
-          <div className="location-header">
-            {`${this.state.activeScene.location}`}
-          </div>
-          <div className="background-image">
-            <img src={Images.meadow} alt="meadow" />
-            <img
-              className="character-image character1"
-              src={Images.unicorn}
-              alt="unicorn"
-            />
-            <img
-              className="character-image character2"
-              src={Images.fairy}
-              alt="fairy"
-            />
-          </div>
-        </div>
+        {this.renderPicture()}
       </div>
     );
   };
