@@ -141,9 +141,38 @@ export default class MyList extends React.Component {
     );
   };
 
-  render() {
+  renderStory = () => {
     const { activeScene } = this.state;
 
+    return (
+      <div className="story-box">
+        <div className="text-page">
+          <div className="page-number">{`Page ${this.state.page}`}</div>
+          <div className="story">{this.renderScene({ activeScene })}</div>
+        </div>
+        <div className="image-container">
+          <div className="location-header">
+            {`${this.state.activeScene.location}`}
+          </div>
+          <div className="background-image">
+            <img src={Images.meadow} alt="meadow" />
+            <img
+              className="character-image character1"
+              src={Images.unicorn}
+              alt="unicorn"
+            />
+            <img
+              className="character-image character2"
+              src={Images.fairy}
+              alt="fairy"
+            />
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  render() {
     console.log("this.state", this.state); // zzz
 
     return (
@@ -152,32 +181,7 @@ export default class MyList extends React.Component {
         {this.renderGirlsAreGoodAt()}
         <div className="body">
           {!this.state.showStory && <FlashCards />}
-          {this.state.showStory && (
-            <div className="story-box">
-              <div className="text-page">
-                <div className="page-number">{`Page ${this.state.page}`}</div>
-                <div className="story">{this.renderScene({ activeScene })}</div>
-              </div>
-              <div className="image-container">
-                <div className="location-header">
-                  {`${this.state.activeScene.location}`}
-                </div>
-                <div className="background-image">
-                  <img src={Images.meadow} alt="meadow" />
-                  <img
-                    className="character-image character1"
-                    src={Images.unicorn}
-                    alt="unicorn"
-                  />
-                  <img
-                    className="character-image character2"
-                    src={Images.fairy}
-                    alt="fairy"
-                  />
-                </div>
-              </div>
-            </div>
-          )}
+          {this.state.showStory && this.renderStory()}
         </div>
       </div>
     );
