@@ -118,7 +118,7 @@ export default class MyList extends React.Component {
     this.setState({ showStory: !this.state.showStory });
   };
 
-  renderGirlsAreGoodAt = () => {
+  renderHeader = () => {
     const goodAtList = [
       "math",
       "reading",
@@ -143,7 +143,7 @@ export default class MyList extends React.Component {
     );
   };
 
-  renderPicture = () => {
+  renderPicturePage = () => {
     return (
       <div className="image-container">
         <div className="location-header">
@@ -166,16 +166,21 @@ export default class MyList extends React.Component {
     );
   };
 
-  renderStory = () => {
+  renderWordPage = () => {
     const { activeScene } = this.state;
+    return (
+      <div className="text-page">
+        <div className="page-number">{`Page ${this.state.page}`}</div>
+        <div className="story">{this.renderScene({ activeScene })}</div>
+      </div>
+    );
+  };
 
+  renderStory = () => {
     return (
       <div className="story-box">
-        <div className="text-page">
-          <div className="page-number">{`Page ${this.state.page}`}</div>
-          <div className="story">{this.renderScene({ activeScene })}</div>
-        </div>
-        {this.renderPicture()}
+        {this.renderWordPage()}
+        {this.renderPicturePage()}
       </div>
     );
   };
@@ -186,7 +191,7 @@ export default class MyList extends React.Component {
     return (
       // <div className={css.test}>
       <div className="main">
-        {this.renderGirlsAreGoodAt()}
+        {this.renderHeader()}
         <div className="body">
           {!this.state.showStory && <FlashCards />}
           {this.state.showStory && this.renderStory()}
