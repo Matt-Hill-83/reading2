@@ -55,7 +55,7 @@ const creatures = [
   // { name: "monster", image: "noun", type: wordTypes.creature },
   { name: "mermaid", image: "noun", type: wordTypes.creature },
   // { name: "zombie", image: "noun", type: wordTypes.creature },
-  // { name: "elf", image: "noun", type: wordTypes.creature },
+  { name: "elf", image: "noun", type: wordTypes.creature },
   { name: "fairy", image: "noun", type: wordTypes.creature }
   // { name: "goblin", image: "noun", type: wordTypes.creature },
   // { name: "giant", image: "noun", type: wordTypes.creature }

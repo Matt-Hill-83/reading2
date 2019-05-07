@@ -76,12 +76,12 @@ const scenes = {
   waterfall: {
     location: "waterfall",
     missingItem: "birthday present",
-    newFriend: { type: "fairy", name: "Luna" }
+    newFriend: { type: "mermaid", name: "Luna" }
   },
   school: {
     location: "school",
     missingItem: "birthday cake",
-    newFriend: { type: "fairy", name: "Luna" }
+    newFriend: { type: "elf", name: "Luna" }
   },
   garden: {
     location: "garden",

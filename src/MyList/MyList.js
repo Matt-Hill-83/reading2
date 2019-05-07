@@ -159,6 +159,7 @@ export default class MyList extends React.Component {
     const renderedImage = Images[activeScene.location] || Images[defaultImage];
 
     const youImage = plot.you.creature;
+    const friendImage = Images[activeScene.newFriend.type];
 
     return (
       <div className="image-container">
@@ -172,11 +173,13 @@ export default class MyList extends React.Component {
             src={Images[youImage]}
             alt={youImage}
           />
-          <img
-            className="character-image character2"
-            src={Images.fairy}
-            alt="fairy"
-          />
+          {friendImage && (
+            <img
+              className="character-image character2"
+              src={friendImage}
+              alt="friend"
+            />
+          )}
         </div>
       </div>
     );

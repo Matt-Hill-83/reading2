@@ -9,6 +9,7 @@ import garden from "./garden-1.jpg";
 import forest from "./forest-1.jpg";
 
 import fairy from "./fairy-1.png";
+import elf from "./elf-1.png";
 import girl from "./girl-1.png";
 import unicorn from "./unicorn-1.png";
 
@@ -21,5 +22,6 @@ export default {
   school,
   garden,
   forest,
-  girl
+  girl,
+  elf
 };
