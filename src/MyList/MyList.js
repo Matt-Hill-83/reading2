@@ -158,6 +158,8 @@ export default class MyList extends React.Component {
     const defaultImage = "waterfall";
     const renderedImage = Images[activeScene.location] || Images[defaultImage];
 
+    const youImage = plot.you.creature;
+
     return (
       <div className="image-container">
         <div className="location-header">
@@ -167,8 +169,8 @@ export default class MyList extends React.Component {
           <img className="background-image" src={renderedImage} alt={"image"} />
           <img
             className="character-image character1"
-            src={Images.girl}
-            alt="girl"
+            src={Images[youImage]}
+            alt={youImage}
           />
           <img
             className="character-image character2"

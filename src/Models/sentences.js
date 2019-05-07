@@ -97,7 +97,7 @@ const plot = {
   you: {
     name: "Pria",
     creature: "girl",
-    homeLocation: "forest",
+    homeLocation: startScene.location,
     vehicle: "scooter"
   },
   scenes
