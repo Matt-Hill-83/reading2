@@ -34,29 +34,21 @@ const lostCreatureStory = ({ you, activeScene, sceneOptionA }) => {
 const birthdayPartyStory = ({ you, activeScene, sceneOptionA }) => {
   return [
     `At the ${activeScene.location}, you see a ${activeScene.newFriend.type}`,
-    `The ${activeScene.newFriend.type} is sad.`,
-    `The ${activeScene.newFriend.type} is crying.`,
     `You say, "Hello ${activeScene.newFriend.type}, my name is ${you.name}"`,
     `The ${activeScene.newFriend.type} says, "Hello ${you.name}?"`,
-    `I need to go to a birthday party.`,
-    `I am sooooooo mad.`
+    `I am sooooooo happy.`,
+    `I need to go to a birthday party.`
   ];
 };
 
 const lostThingStory = ({ you, activeScene, sceneOptionA }) => {
   return [
     `At the ${activeScene.location}, you see a ${activeScene.newFriend.type}`,
-    `The ${activeScene.newFriend.type} is sad.`,
-    `The ${activeScene.newFriend.type} is crying.`,
-    `You say, "Hello ${activeScene.newFriend.type}, my name is ${you.name}"`,
-    `The ${activeScene.newFriend.type} says, "Hello ${
-      you.name
-    }, can you help me?"`,
-    `I am lost.`,
+    `The ${activeScene.newFriend.type} is happy.`,
     `I need to go to the ${sceneOptionA.location} to find my friend ${
       sceneOptionA.newFriend.name
     }.`,
-    `But I am lost.`,
+    `I lost my ${activeScene.missingItem}.`,
     `I am sooooooo sad.`
   ];
 };
@@ -103,7 +95,7 @@ const startScene = scenes.home;
 const plot = {
   activeScene: startScene,
   you: {
-    name: "Priana",
+    name: "Pria",
     creature: "girl",
     homeLocation: "forest",
     vehicle: "scooter"
@@ -121,7 +113,6 @@ const getNarrative = ({ plot, activeScene, sceneOptionA, sceneOptionB }) => {
   } else {
     const story = Utils.getRandomItem({ items: stories });
     return story({ you, activeScene, sceneOptionA });
-    // return lostCreatureStory({ you, activeScene, sceneOptionA });
   }
 };
 
