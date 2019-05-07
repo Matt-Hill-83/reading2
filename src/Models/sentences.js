@@ -55,7 +55,7 @@ const lostThingStory = ({ you, activeScene, sceneOptionA }) => {
 
 const scenes = {
   home: {
-    location: "home",
+    location: "forest",
     missingItem: "birthday present",
     newFriend: {
       type: Utils.getRandomWordByType({

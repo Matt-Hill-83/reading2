@@ -167,8 +167,8 @@ export default class MyList extends React.Component {
           <img className="background-image" src={renderedImage} alt={"image"} />
           <img
             className="character-image character1"
-            src={Images.unicorn}
-            alt="unicorn"
+            src={Images.girl}
+            alt="girl"
           />
           <img
             className="character-image character2"
