@@ -33,16 +33,40 @@
       display: flex;
       width: 100%;
 
-      .scene-list {
+      .text-page {
         display: flex;
         flex-direction: column;
-        margin: auto;
-      }
+        flex: 1;
+        max-width: 800px;
 
-      .narrative {
-        display: flex;
-        flex-direction: column;
-        margin: auto;
+        .story {
+          display: flex;
+          flex-direction: column;
+          margin: 24px 0px;
+          height: 100%;
+
+          .scene-list {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+          }
+          .narrative {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+
+            .sentence {
+              display: flex;
+              align-items: center;
+
+              font-size: 30px;
+            }
+
+            .sentence:nth-of-type(3n) {
+              margin-bottom: 24px;
+            }
+          }
+        }
       }
 
       .image-container {
@@ -69,28 +93,16 @@
         padding: 0px 24px;
         margin-bottom: 24px;
         margin-top: auto;
-      }
 
-      .choice-button {
-        display: flex;
-        align-items: center;
-        flex: 1;
+        .choice-button {
+          display: flex;
+          align-items: center;
+          flex: 1;
 
-        &:hover {
-          border: 1px solid blue !important;
+          &:hover {
+            border: 1px solid blue !important;
+          }
         }
-
-        /* &: not(: last-child) {
-      border: 1px solid blue !important;
-    } */
-      }
-
-      .text-page {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-
-        max-width: 800px;
       }
 
       .character-image {
@@ -140,13 +152,6 @@
         max-width: 300px;
       }
 
-      .story {
-        display: flex;
-        flex-direction: column;
-        margin: 24px 0px;
-        height: 100%;
-      }
-
       .background-image {
         border: 3px solid var(--color-purple) !important;
         display: flex;
@@ -156,17 +161,6 @@
         max-width: 800px;
         height: auto;
         max-height: 600px;
-      }
-
-      .sentence {
-        display: flex;
-        align-items: center;
-
-        font-size: 30px;
-      }
-
-      .sentence:nth-of-type(3n) {
-        margin-bottom: 24px;
       }
     }
   }

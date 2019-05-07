@@ -106,7 +106,7 @@ export default class MyList extends React.Component {
   };
 
   // buttons should be randomly derived from the nextScenes
-  renderButtons = ({ activeScene }) => {
+  renderButtons = () => {
     const options = [this.state.sceneOptionA, this.state.sceneOptionB];
     const buttons = options.map((scene, i) => {
       if (!scene) {
