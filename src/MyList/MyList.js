@@ -2,7 +2,7 @@ import React from "react";
 import { IconNames } from "@blueprintjs/icons";
 import { Button, Icon } from "@blueprintjs/core";
 // import { SketchPicker } from "react-color";
-// import { observer } from "mobx-react";
+import { observer } from "mobx-react";
 
 import Utils from "../Utils/Utils.js";
 import Images from "../images/images.js";
@@ -12,13 +12,15 @@ import mySentences from "../Models/sentences.js";
 
 import FlashCards from "../FlashCards/FlashCards";
 
+import { WordsStore } from "../Stores/WordsStore";
+
 // import css from "./MyList.scss";
 import "./MyList.scss";
 
 const { getNarrative, plot } = mySentences;
 const { wordTypes } = myWords;
 
-export default class MyList extends React.Component {
+class MyList extends React.Component {
   state = {
     activeTab: wordTypes.name,
     showStory: true,
@@ -26,7 +28,10 @@ export default class MyList extends React.Component {
     page: 0
   };
 
+  wordsStore = new WordsStore({ activeScene: plot.activeScene });
   async componentWillMount() {
+    console.log("WordsStore", WordsStore); // zzz
+
     const activeScene = plot.activeScene;
 
     this.updateActiveScene({ activeScene });
@@ -43,6 +48,7 @@ export default class MyList extends React.Component {
     const sceneOptionA = Utils.reserveRandomItem({ items: scenesList });
     const sceneOptionB = Utils.reserveRandomItem({ items: scenesList });
 
+    // this.wordsStore.setActiveScene(activeScene);
     this.setState({
       activeScene,
       sceneOptionA,
@@ -216,3 +222,4 @@ export default class MyList extends React.Component {
     );
   }
 }
+export default observer(MyList);

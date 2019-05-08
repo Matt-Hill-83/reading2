@@ -99,13 +99,13 @@ const locations = [
   { name: "lake", image: "noun", type: wordTypes.location },
   { name: "store", image: "noun", type: wordTypes.location },
   { name: "school", image: "noun", type: wordTypes.location },
-  // { name: "forest", image: "noun", type: wordTypes.location },
+  { name: "forest", image: "noun", type: wordTypes.location },
   { name: "library", image: "noun", type: wordTypes.location },
   { name: "island", image: "noun", type: wordTypes.location },
   { name: "waterfall", image: "noun", type: wordTypes.location },
-  { name: "home", image: "noun", type: wordTypes.location }
-  // { name: "beach", image: "noun", type: wordTypes.location },
-  // { name: "playground", image: "noun", type: wordTypes.location }
+  { name: "home", image: "noun", type: wordTypes.location },
+  { name: "beach", image: "noun", type: wordTypes.location },
+  { name: "playground", image: "noun", type: wordTypes.location }
 ];
 
 const garments = [
