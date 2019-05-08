@@ -58,10 +58,7 @@ const scenes = {
     location: "forest",
     missingItem: "birthday present",
     newFriend: {
-      type: Utils.getRandomWordByType({
-        words,
-        type: wordTypes.creature
-      }),
+      type: undefined,
       name: "Crystal"
     },
     narrative: createHomeStory,
@@ -95,7 +92,7 @@ const startScene = scenes.home;
 const plot = {
   activeScene: startScene,
   you: {
-    name: "Pria",
+    name: "Prichella",
     creature: "girl",
     homeLocation: startScene.location,
     vehicle: "scooter"
