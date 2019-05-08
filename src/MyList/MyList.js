@@ -48,9 +48,9 @@ class MyList extends React.Component {
     const sceneOptionA = Utils.reserveRandomItem({ items: scenesList });
     const sceneOptionB = Utils.reserveRandomItem({ items: scenesList });
 
-    // this.wordsStore.setActiveScene(activeScene);
+    this.wordsStore.setActiveScene(activeScene);
     this.setState({
-      activeScene,
+      // activeScene,
       sceneOptionA,
       sceneOptionB,
       page: this.state.page + 1
@@ -65,8 +65,10 @@ class MyList extends React.Component {
     return (
       <React.Fragment>
         {this.renderSceneList()}
-        {this.renderNarrative({ activeScene: this.state.activeScene })}
-        {this.renderButtons({ activeScene: this.state.activeScene })}
+        {this.renderNarrative({
+          activeScene: this.wordsStore.getActiveScene()
+        })}
+        {this.renderButtons({ activeScene: this.wordsStore.getActiveScene() })}
       </React.Fragment>
     );
   };
@@ -160,7 +162,7 @@ class MyList extends React.Component {
   };
 
   renderPicturePage = () => {
-    const activeScene = this.state.activeScene;
+    const activeScene = this.wordsStore.getActiveScene();
     const defaultImage = "waterfall";
     const renderedImage = Images[activeScene.location] || Images[defaultImage];
 
@@ -169,9 +171,7 @@ class MyList extends React.Component {
 
     return (
       <div className="image-container">
-        <div className="location-header">
-          {`${this.state.activeScene.location}`}
-        </div>
+        <div className="location-header">{`${activeScene.location}`}</div>
         <div className="background-image">
           <img className="background-image" src={renderedImage} alt={"image"} />
           <img
