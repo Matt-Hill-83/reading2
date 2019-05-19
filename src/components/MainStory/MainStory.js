@@ -10,6 +10,7 @@ import FlashCards from "../FlashCards/FlashCards";
 import PicturePage from "../PicturePage/PicturePage";
 import Sounds from "../../Sounds/Sounds";
 import Utils from "../../Utils/Utils.js";
+import WordPage from "../WordPage/WordPage.js";
 
 import css from "./MainStory.module.scss";
 
@@ -175,6 +176,8 @@ class MainStory extends React.Component {
   };
 
   render() {
+    const { activeScene } = this.state;
+
     return (
       <div className={css.main}>
         {this.renderHeader()}
@@ -184,7 +187,7 @@ class MainStory extends React.Component {
           {!this.state.showStory && <FlashCards />}
           {this.state.showStory && (
             <div className={css.storyBox}>
-              {this.renderWordPage()}
+              <WordPage activeScene={activeScene} />
               <PicturePage
                 activeScene={this.state.activeScene}
                 pageNum={this.state.pageNum}

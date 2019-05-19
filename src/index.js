@@ -5,5 +5,5 @@ import "@firebase/firestore";
 import App from "./App";
 import Words from "./components/Words/Words";
 
-ReactDOM.render(<Words />, document.getElementById("root"));
-// ReactDOM.render(<App />, document.getElementById("root"));
+// ReactDOM.render(<Words />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
