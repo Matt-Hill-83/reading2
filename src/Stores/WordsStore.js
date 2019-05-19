@@ -2,11 +2,11 @@
 import { extendObservable } from "mobx";
 
 export class WordsStore {
-  constructor({ activeScene }) {
+  constructor() {
     // this.activeScene = activeScene;
 
     extendObservable(this, {
-      activeScene
+      activeScene: {}
     });
   }
 

@@ -1,4 +1,4 @@
-.main2 {
+.main {
   --color-blue: blue;
   --color-blue-light: #00ade4;
   --color-purple: #9451f9;
@@ -15,11 +15,11 @@
   height: 50%;
 }
 
-.word-tools-container {
+.wordToolsContainer {
   display: flex;
 }
 
-.word-container {
+.wordContainer {
   display: inline-flex;
   height: 40px;
   align-items: center;
@@ -30,6 +30,6 @@
   font-size: 24px;
 }
 
-.favorite-button {
+.favoriteButton {
   margin-left: 24px;
 }

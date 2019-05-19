@@ -2,12 +2,10 @@ import React from "react";
 import { IconNames } from "@blueprintjs/icons";
 import { Button, Icon, Tab, Tabs } from "@blueprintjs/core";
 
-import Utils from "../Utils/Utils.js";
-import Images from "../images/images.js";
+import myWords from "../../Models/words.js";
+import Utils from "../../Utils/Utils.js";
 
-import myWords from "../Models/words.js";
-
-import css from "./FlashCards.css";
+import css from "./FlashCards.module.css";
 
 const { words, wordTypes } = myWords;
 
@@ -31,21 +29,21 @@ export default class FlashCards extends React.Component {
     const renderedFlashCards = words.map((word, i) => {
       const iconColor = word.isFavorite ? "purple" : "pink";
       return (
-        <div key={i} className="word-tools-container">
+        <div key={i} className={css.wordToolsContainer}>
           <Button
-            className="favorite-button"
+            className={css.favoriteButton}
             onClick={() => this.favoriteWord({ word })}
           >
             <Icon color={iconColor} icon={IconNames.STAR} />
           </Button>
           <Button
-            className="include-button"
+            className={css.includeButton}
             onClick={() => this.favoriteWord({ word })}
           >
             <Icon color={iconColor} icon={IconNames.BADGE} />
           </Button>
-          <div className="word-container">
-            <span className="word">{` ${word.name}`}</span>
+          <div className={css.wordContainer}>
+            <span className={css.word}>{word.name}</span>
           </div>
         </div>
       );
@@ -76,14 +74,14 @@ export default class FlashCards extends React.Component {
     });
 
     return (
-      <div className="main2">
-        <div className="left">
-          <span className="header">Flash Cards</span>
+      <div className={css.main}>
+        <div className="xxxleft">
+          <span className={css.header}>Flash Cards</span>
 
           <Tabs id="TabsExample">{renderedPanels}</Tabs>
         </div>
-        <div className="center">
-          <span className="header">
+        <div className="xxxcenter">
+          <span className={css.header}>
             {`Words I Can Read --- ${
               Utils.getWordsByFavorite({ words }).length
             }`}

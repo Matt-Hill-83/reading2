@@ -67,8 +67,10 @@ const names = [
   { name: "Charlie", image: "noun", type: wordTypes.name },
   { name: "Bob", image: "noun", type: wordTypes.name },
   { name: "Matt", image: "noun", type: wordTypes.name },
-  { name: "Mom", image: "noun", type: wordTypes.name },
-  { name: "Dad", image: "noun", type: wordTypes.name },
+  { name: "Will", image: "noun", type: wordTypes.name },
+  { name: "Zippy", image: "noun", type: wordTypes.name },
+  // { name: "Mom", image: "noun", type: wordTypes.name },
+  // { name: "Dad", image: "noun", type: wordTypes.name },
   { name: "Mason", image: "noun", type: wordTypes.name },
   { name: "Abi", image: "noun", type: wordTypes.name },
   { name: "Elliot", image: "noun", type: wordTypes.name },
@@ -78,7 +80,6 @@ const names = [
   { name: "Chris", image: "noun", type: wordTypes.name },
   { name: "Tami", image: "noun", type: wordTypes.name },
   { name: "Nico", image: "noun", type: wordTypes.name },
-  { name: "Plato", image: "noun", type: wordTypes.name },
   { name: "Plato", image: "noun", type: wordTypes.name }
 ];
 
