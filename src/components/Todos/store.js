@@ -4,11 +4,11 @@ import { initFirestorter, Collection, Document } from "firestorter";
 import { struct } from "superstruct";
 
 firebase.initializeApp({
-  apiKey: "AIzaSyAslt8cmAwctNGvaf6BZLRwxINbtycf78I90210",
-  authDomain: "happy-reader-4.firebaseapp.com",
-  databaseURL: "https://happy-reader-4.firebaseio.com",
-  projectId: "happy-reader-4",
-  storageBucket: "happy-reader-4.appspot.com"
+  // apiKey: "AIzaSyAslt8cmAwctNGvaf6BZLRwxINbtycf78I90210",
+  // authDomain: "happy-reader-4.firebaseapp.com",
+  // databaseURL: "https://happy-reader-4.firebaseio.com",
+  projectId: "happy-reader-4"
+  // storageBucket: "happy-reader-4.appspot.com"
 });
 
 const firestore = firebase.firestore();
