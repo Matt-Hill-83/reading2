@@ -16,7 +16,7 @@ firestore.settings({ timestampsInSnapshots: true });
 
 initFirestorter({ firebase: firebase });
 
-class Todo extends Document {
+class Word extends Document {
   constructor(source, options) {
     super(source, {
       ...(options || {}),
@@ -32,7 +32,7 @@ class Todo extends Document {
 }
 
 const words = new Collection("words", {
-  DocumentClass: Todo
+  DocumentClass: Word
 });
 
 export { words };

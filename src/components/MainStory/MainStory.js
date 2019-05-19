@@ -81,10 +81,6 @@ class MainStory extends React.Component {
           const tabIndex = 100 * sentenceIndex + (wordIndex + 1);
 
           // TODO - fix autofocus
-          // TODO - fix autofocus
-          // TODO - fix autofocus
-          // TODO - fix autofocus
-          // TODO - fix autofocus
           const autofocus = tabIndex === 1 ? { autoFocus: true } : { test: 3 };
 
           return (

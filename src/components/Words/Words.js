@@ -35,8 +35,8 @@ const styles = {
   }
 };
 
-const Todos = observer(
-  class Todos extends Component {
+const Words = observer(
+  class Words extends Component {
     constructor(props) {
       super(props);
       this.state = {};
@@ -59,4 +59,4 @@ const Todos = observer(
   }
 );
 
-export default Todos;
+export default Words;

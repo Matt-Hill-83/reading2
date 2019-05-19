@@ -1,17 +1,9 @@
-
-
 TODO
 ----------------
-install mobx
-add sass
 add db
-write to file, or to local storage?
 random unicorns
 animations on click
-word picker
 conversations
-backdrop images
-character images
 play sounds on click words
 cool fonts for word types
 
@@ -19,9 +11,11 @@ figure out currying or func prog
 words.byType.isSelected.getrandom.get name
 
 
-
-
-
 DONE
 -------------
+install mobx
+add sass
 color icons
+backdrop images
+character images
+word picker
