@@ -28,13 +28,14 @@ const styles = {
 class TodoItem extends Component {
   render() {
     const { todo } = this.props;
-    const { finished, text } = todo.data;
+    const { finished, name } = todo.data;
 
     console.log("todo", todo); // zzz
+    console.log("todo.name", todo.name); // zzz
 
     return (
       <div>
-        {text}
+        {name}
         <Checkbox
           style={styles.checkbox}
           onClick={this.onPressCheck}

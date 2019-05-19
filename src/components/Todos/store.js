@@ -21,15 +21,18 @@ class Todo extends Document {
     super(source, {
       ...(options || {}),
       schema: struct({
-        text: "string",
-        finished: "boolean?"
+        text: "string?",
+        finished: "boolean?",
+        name: "string?",
+        type: "string?",
+        image: "string?"
       })
     });
   }
 }
 
-const todos = new Collection("todos", {
+const words = new Collection("words", {
   DocumentClass: Todo
 });
 
-export { todos };
+export { words };

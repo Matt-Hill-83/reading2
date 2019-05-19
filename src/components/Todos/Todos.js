@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
 
-import { todos } from "./store";
+import { words } from "./store";
 import TodoItem from "./TodoItem";
 
 const styles = {
@@ -43,9 +43,9 @@ const Todos = observer(
     }
 
     render() {
-      const { docs } = todos;
+      const { docs } = words;
       const children = docs.map(todo => <TodoItem key={todo.id} todo={todo} />);
-      const { isLoading } = todos;
+      const { isLoading } = words;
 
       return (
         <div style={styles.container}>
