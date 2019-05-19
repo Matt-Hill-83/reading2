@@ -25,13 +25,13 @@ const styles = {
   }
 };
 
-class TodoItem extends Component {
+class WordItem extends Component {
   render() {
-    const { todo } = this.props;
-    const { finished, name } = todo.data;
+    const { word } = this.props;
+    const { finished, name } = word.data;
 
-    console.log("todo", todo); // zzz
-    console.log("todo.name", todo.name); // zzz
+    console.log("word", word); // zzz
+    console.log("word.name", word.name); // zzz
 
     return (
       <div>
@@ -46,11 +46,11 @@ class TodoItem extends Component {
   }
 
   onPressDelete = async () => {
-    const { todo } = this.props;
+    const { word } = this.props;
     if (this._deleting) return;
     this._deleting = true;
     try {
-      await todo.delete();
+      await word.delete();
       this._deleting = false;
     } catch (err) {
       this._deleting = false;
@@ -58,20 +58,20 @@ class TodoItem extends Component {
   };
 
   onPressCheck = async () => {
-    const { todo } = this.props;
-    console.log("todo", todo); // zzz
+    const { word } = this.props;
+    console.log("word", word); // zzz
 
-    await todo.update({
-      finished: !todo.data.finished
+    await word.update({
+      finished: !word.data.finished
     });
   };
 
   onTextChange = async (event, newValue) => {
-    const { todo } = this.props;
-    await todo.update({
+    const { word } = this.props;
+    await word.update({
       text: newValue
     });
   };
 }
 
-export default observer(TodoItem);
+export default observer(WordItem);
