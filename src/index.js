@@ -9,8 +9,8 @@ import Todos from "./components/Todos/Todos";
 
 // firebase.initializeApp(config);
 
-// ReactDOM.render(<Todos />, document.getElementById("root"));
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<Todos />, document.getElementById("root"));
+// ReactDOM.render(<App />, document.getElementById("root"));
 // ReactDOM.render(
 //   <FirestoreProvider firebase={firebase}>
 //     <App />

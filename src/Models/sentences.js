@@ -140,7 +140,7 @@ const stories = [
 const plot = {
   activeScene: startScene,
   you: {
-    name: "Prichella",
+    name: "Matt",
     creature: "girl",
     homeLocation: startScene.location,
     vehicle: "scooter"

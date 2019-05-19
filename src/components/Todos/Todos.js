@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
+
 import { todos } from "./store";
-import Checkbox from "material-ui/Checkbox";
 import TodoItem from "./TodoItem";
-// test!!!!!!!!!!!!!!!!!
 
 const styles = {
   container: {
@@ -40,13 +39,11 @@ const Todos = observer(
   class Todos extends Component {
     constructor(props) {
       super(props);
-      this.state = {
-        disabled: false
-      };
+      this.state = {};
     }
 
     render() {
-      const { docs, query } = todos;
+      const { docs } = todos;
       const children = docs.map(todo => <TodoItem key={todo.id} todo={todo} />);
       const { isLoading } = todos;
 
@@ -59,12 +56,6 @@ const Todos = observer(
         </div>
       );
     }
-
-    onCheckDisable = () => {
-      this.setState({
-        disabled: !this.state.disabled
-      });
-    };
   }
 );
 
