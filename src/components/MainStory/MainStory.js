@@ -20,8 +20,8 @@ const { wordTypes } = myWords;
 class MainStory extends React.Component {
   state = {
     activeTab: wordTypes.name,
-    showStory: false,
-    // showStory: true,
+    // showStory: false,
+    showStory: true,
     activeScene: undefined,
     pageNum: 0,
     sound: null

@@ -37,7 +37,7 @@ const animals = [
   { name: "turtle", image: "noun", type: wordTypes.animal },
   { name: "bunny", image: "noun", type: wordTypes.animal },
   { name: "monster", image: "noun", type: wordTypes.animal },
-  { name: "alligator", image: "noun", type: wordTypes.animal },
+  // { name: "alligator", image: "noun", type: wordTypes.animal },
   { name: "snake", image: "noun", type: wordTypes.animal }
 ];
 
