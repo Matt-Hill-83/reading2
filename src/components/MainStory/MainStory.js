@@ -57,80 +57,6 @@ class MainStory extends React.Component {
     });
   };
 
-  playWordSound = (event, { word }) => {
-    word = word.replace(/[.|,|/?]/, "");
-    this.setState({ sound: Sounds[word] });
-  };
-
-  renderNarrative = () => {
-    const { activeScene, sceneOptionA, sceneOptionB, story } = this.state;
-
-    const narrative = getNarrative({
-      plot,
-      activeScene,
-      sceneOptionA,
-      sceneOptionB,
-      story
-    });
-
-    const renderedNarrative =
-      narrative &&
-      narrative.map((sentence, sentenceIndex) => {
-        const parsedSentence = sentence.split(/\s/);
-
-        const renderedSentence = parsedSentence.map((word, wordIndex) => {
-          const tabIndex = 100 * sentenceIndex + (wordIndex + 1);
-
-          // TODO - fix autofocus
-          const autofocus = tabIndex === 1 ? { autoFocus: true } : { test: 3 };
-
-          return (
-            <span
-              key={wordIndex}
-              {...autofocus}
-              autoFocus
-              tabIndex={tabIndex}
-              className={css.sentenceWord}
-              onClick={event => this.playWordSound(event, { word })}
-              onFocus={event => this.playWordSound(event, { word })}
-            >
-              {word}
-            </span>
-          );
-        });
-
-        return (
-          <span key={sentenceIndex} className={css.sentence}>
-            {renderedSentence}
-          </span>
-        );
-      });
-
-    return <div className={css.narrative}>{renderedNarrative}</div>;
-  };
-
-  changeScene = ({ scene }) => {
-    this.updateActiveScene({ activeScene: scene });
-  };
-
-  renderButtons = () => {
-    const options = [this.state.sceneOptionA, this.state.sceneOptionB];
-    const buttons = options.map((scene, i) => {
-      if (!scene) {
-        return null;
-      }
-
-      const onClick = () => this.changeScene({ scene });
-
-      return (
-        <Button key={i} onClick={onClick} className={css.choiceButton}>{`${
-          scene.location
-        }`}</Button>
-      );
-    });
-    return <div className={css.decisionButtonRow}>{buttons}</div>;
-  };
-
   newStory = () => {
     this.setState({ showStory: !this.state.showStory });
   };
@@ -144,6 +70,7 @@ class MainStory extends React.Component {
       "school",
       "jumping"
     ];
+
     const goodAt = Utils.getRandomItem({ items: goodAtList });
 
     const toggleButton = (
@@ -164,19 +91,22 @@ class MainStory extends React.Component {
     );
   };
 
-  renderWordPage = () => {
-    return (
-      <div className={css.textPage}>
-        <div className={css.story}>
-          {this.renderNarrative()}
-          {this.renderButtons({ activeScene: this.state.activeScene })}
-        </div>
-      </div>
-    );
-  };
-
   render() {
-    const { activeScene } = this.state;
+    const {
+      activeScene,
+      pageNum,
+      sceneOptionA,
+      sceneOptionB,
+      story
+    } = this.state;
+
+    const wordPageProps = {
+      activeScene,
+      pageNum,
+      sceneOptionA,
+      sceneOptionB,
+      story
+    };
 
     return (
       <div className={css.main}>
@@ -187,11 +117,16 @@ class MainStory extends React.Component {
           {!this.state.showStory && <FlashCards />}
           {this.state.showStory && (
             <div className={css.storyBox}>
-              <WordPage activeScene={activeScene} />
-              <PicturePage
-                activeScene={this.state.activeScene}
-                pageNum={this.state.pageNum}
+              <WordPage
+                // activeScene={activeScene}
+                // pageNum={pageNum}
+                // sceneOptionA={sceneOptionA}
+                // sceneOptionB={sceneOptionB}
+                // story={story}
+                wordPageProps={wordPageProps}
+                updateActiveScene={this.updateActiveScene}
               />
+              <PicturePage activeScene={activeScene} pageNum={pageNum} />
             </div>
           )}
         </div>

@@ -1,59 +1,34 @@
 import React from "react";
 import { observer } from "mobx-react";
-import { IconNames } from "@blueprintjs/icons";
-import { Button, Icon, Position, Tooltip } from "@blueprintjs/core";
+import { Button } from "@blueprintjs/core";
 
-import myWords from "../../Models/words.js";
 import mySentences from "../../Models/sentences.js";
 
-import { WordsStore } from "../../Stores/WordsStore";
 import Sounds from "../../Sounds/Sounds";
-import Utils from "../../Utils/Utils.js";
 
 import css from "./WordPage.module.scss";
 
 const { getNarrative, plot } = mySentences;
-const { wordTypes } = myWords;
 
 class WordPage extends React.Component {
   state = {
-    activeTab: wordTypes.name,
     showStory: true,
     activeScene: undefined,
     pageNum: 0,
     sound: null
   };
 
-  wordsStore = new WordsStore();
-
   async componentWillMount() {
-    // const activeScene = plot.activeScene;
+    // this.setState({ activeScene: this.props.activeScene });
+    console.log("this.props.wordPageProps", this.props.wordPageProps); // zzz
 
-    this.updateActiveScene({ activeScene: this.props.activeScene });
+    this.setState({ ...this.props.wordPageProps });
   }
 
-  updateActiveScene = ({ activeScene }) => {
-    // TODO - create all random story elements when activeScene is updated.
-    activeScene.isUsed = true;
-
-    const scenes = plot.scenes;
-    const scenesList = Object.values(scenes) || [];
-
-    Utils.unreserveItems({ items: scenesList });
-
-    const sceneOptionA = Utils.reserveRandomItem({ items: scenesList });
-    const sceneOptionB = Utils.reserveRandomItem({ items: scenesList });
-
-    const story = Utils.getRandomItem({ items: plot.stories });
-
-    this.setState({
-      activeScene,
-      sceneOptionA,
-      sceneOptionB,
-      pageNum: this.state.pageNum + 1,
-      story
-    });
-  };
+  componentWillReceiveProps(newProps) {
+    this.setState({ ...newProps.wordPageProps });
+    // this.setState({ activeScene: newProps.activeScene });
+  }
 
   playWordSound = (event, { word }) => {
     word = word.replace(/[.|,|/?]/, "");
@@ -62,6 +37,10 @@ class WordPage extends React.Component {
 
   renderNarrative = () => {
     const { activeScene, sceneOptionA, sceneOptionB, story } = this.state;
+
+    if (!activeScene) {
+      return null;
+    }
 
     const narrative = getNarrative({
       plot,
@@ -108,11 +87,17 @@ class WordPage extends React.Component {
   };
 
   changeScene = ({ scene }) => {
-    this.updateActiveScene({ activeScene: scene });
+    this.props.updateActiveScene({ activeScene: scene });
   };
 
   renderButtons = () => {
-    const options = [this.state.sceneOptionA, this.state.sceneOptionB];
+    const { activeScene, sceneOptionA, sceneOptionB } = this.state;
+
+    if (!activeScene) {
+      return null;
+    }
+
+    const options = [sceneOptionA, sceneOptionB];
     const buttons = options.map((scene, i) => {
       if (!scene) {
         return null;
@@ -130,12 +115,14 @@ class WordPage extends React.Component {
   };
 
   render() {
+    const { activeScene } = this.state;
+
     return (
       <div className={css.textPage}>
         <audio src={this.state.sound} autoPlay />
         <div className={css.story}>
           {this.renderNarrative()}
-          {this.renderButtons({ activeScene: this.state.activeScene })}
+          {this.renderButtons({ activeScene })}
         </div>
       </div>
     );
