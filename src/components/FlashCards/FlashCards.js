@@ -75,12 +75,14 @@ export default class FlashCards extends React.Component {
 
     return (
       <div className={css.main}>
-        <div className="xxxleft">
+        <div className={css.left}>
           <span className={css.header}>Flash Cards</span>
 
-          <Tabs id="TabsExample">{renderedPanels}</Tabs>
+          <Tabs className={css.tabs} id="TabsExample">
+            {renderedPanels}
+          </Tabs>
         </div>
-        <div className="xxxcenter">
+        <div className={css.right}>
           <span className={css.header}>
             {`Words I Can Read --- ${
               Utils.getWordsByFavorite({ words }).length

@@ -2,31 +2,32 @@ import React from "react";
 import { observer } from "mobx-react";
 import { IconNames } from "@blueprintjs/icons";
 import { Button, Icon, Position, Tooltip } from "@blueprintjs/core";
+
 import myWords from "../../Models/words.js";
 import mySentences from "../../Models/sentences.js";
 
-import { WordsStore } from "../../Stores/WordsStore";
+// import { WordsStore } from "../../Stores/WordsStore";
 import FlashCards from "../FlashCards/FlashCards";
 import PicturePage from "../PicturePage/PicturePage";
-import Sounds from "../../Sounds/Sounds";
 import Utils from "../../Utils/Utils.js";
 import WordPage from "../WordPage/WordPage.js";
 
 import css from "./MainStory.module.scss";
 
-const { getNarrative, plot } = mySentences;
+const { plot } = mySentences;
 const { wordTypes } = myWords;
 
 class MainStory extends React.Component {
   state = {
     activeTab: wordTypes.name,
-    showStory: true,
+    showStory: false,
+    // showStory: true,
     activeScene: undefined,
     pageNum: 0,
     sound: null
   };
 
-  wordsStore = new WordsStore();
+  // wordsStore = new WordsStore();
 
   async componentWillMount() {
     const activeScene = plot.activeScene;
@@ -118,11 +119,6 @@ class MainStory extends React.Component {
           {this.state.showStory && (
             <div className={css.storyBox}>
               <WordPage
-                // activeScene={activeScene}
-                // pageNum={pageNum}
-                // sceneOptionA={sceneOptionA}
-                // sceneOptionB={sceneOptionB}
-                // story={story}
                 wordPageProps={wordPageProps}
                 updateActiveScene={this.updateActiveScene}
               />

@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "@firebase/firestore";
+import "@blueprintjs/core/lib/css/blueprint.css";
 
 import App from "./App";
 import Words from "./components/Words/Words";
