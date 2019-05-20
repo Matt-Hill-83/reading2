@@ -6,7 +6,6 @@ import { Button, Icon, Position, Tooltip } from "@blueprintjs/core";
 import myWords from "../../Models/words.js";
 import mySentences from "../../Models/sentences.js";
 
-// import { WordsStore } from "../../Stores/WordsStore";
 import FlashCards from "../FlashCards/FlashCards";
 import PicturePage from "../PicturePage/PicturePage";
 import Utils from "../../Utils/Utils.js";
@@ -26,8 +25,6 @@ class MainStory extends React.Component {
     pageNum: 0,
     sound: null
   };
-
-  // wordsStore = new WordsStore();
 
   async componentWillMount() {
     const activeScene = plot.activeScene;
