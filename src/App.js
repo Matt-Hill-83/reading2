@@ -1,9 +1,9 @@
 import React from "react";
-import "./App.module.scss";
-import MainStory from "./components/MainStory/MainStory";
-
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
+
+import MainStory from "./components/MainStory/MainStory";
+import "./App.module.scss";
 
 function App() {
   const muiTheme = getMuiTheme();

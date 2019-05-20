@@ -28,10 +28,7 @@ const styles = {
 class WordItem extends Component {
   render() {
     const { word } = this.props;
-    const { finished, name } = word.data;
-
-    console.log("word", word); // zzz
-    console.log("word.name", word.name); // zzz
+    const { isFavorite, name } = word.data;
 
     return (
       <div>
@@ -39,7 +36,7 @@ class WordItem extends Component {
         <Checkbox
           style={styles.checkbox}
           onClick={this.onPressCheck}
-          checked={finished}
+          checked={isFavorite}
         />
       </div>
     );
@@ -59,10 +56,9 @@ class WordItem extends Component {
 
   onPressCheck = async () => {
     const { word } = this.props;
-    console.log("word", word); // zzz
 
     await word.update({
-      finished: !word.data.finished
+      isFavorite: !word.data.isFavorite
     });
   };
 

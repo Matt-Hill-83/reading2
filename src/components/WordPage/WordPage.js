@@ -19,15 +19,11 @@ class WordPage extends React.Component {
   };
 
   async componentWillMount() {
-    // this.setState({ activeScene: this.props.activeScene });
-    console.log("this.props.wordPageProps", this.props.wordPageProps); // zzz
-
     this.setState({ ...this.props.wordPageProps });
   }
 
   componentWillReceiveProps(newProps) {
     this.setState({ ...newProps.wordPageProps });
-    // this.setState({ activeScene: newProps.activeScene });
   }
 
   playWordSound = (event, { word }) => {

@@ -1,14 +1,30 @@
-// todo
-// flag a word : isUsedInStory
-
 export default class Utils {
-  static removeFavorites = words => words.filter(word => !word.isFavorite);
+  static removeFavorites = words =>
+    words.filter(word => {
+      if (word.data) {
+        return !word.data.isFavorite;
+      }
+      return !word.isFavorite;
+    });
 
-  static getWordsByType = ({ words, type }) =>
-    words.filter(word => word.type === type);
+  static getWordsByType = ({ words, type }) => {
+    return words.filter(word => {
+      if (word.data) {
+        return word.data.type === type;
+      }
 
-  static getWordsByFavorite = ({ words, type }) =>
-    words.filter(word => word.isFavorite === true);
+      return word.type === type;
+    });
+  };
+
+  static getWordsByFavorite = ({ words }) => {
+    return words.filter(word => {
+      if (word.data) {
+        return word.data.isFavorite === true;
+      }
+      return word.isFavorite === true;
+    });
+  };
 
   static getRandomItem = ({ items }) =>
     items[Math.floor(Math.random() * items.length)];

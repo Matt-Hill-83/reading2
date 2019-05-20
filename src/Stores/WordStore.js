@@ -22,7 +22,7 @@ class Word extends Document {
       ...(options || {}),
       schema: struct({
         text: "string?",
-        finished: "boolean?",
+        isFavorite: "boolean?",
         name: "string?",
         type: "string?",
         image: "string?"
@@ -31,8 +31,8 @@ class Word extends Document {
   }
 }
 
-const words = new Collection("words", {
+const words2 = new Collection("words", {
   DocumentClass: Word
 });
 
-export { words };
+export { words2 };

@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
 
-import { words } from "./WordStore";
 import WordItem from "./WordItem";
+import { words2 } from "../../Stores/WordStore";
+
+import { Button } from "@blueprintjs/core";
+import words from "../../Models/words";
 
 const styles = {
   container: {
@@ -42,13 +45,36 @@ const Words = observer(
       this.state = {};
     }
 
+    clone = object => {
+      return object ? JSON.parse(JSON.stringify(object)) : null;
+    };
+
+    onPressAdd = () => {
+      const test = words.words.slice(0, 5);
+      this.addItems({ words: test });
+    };
+
+    addItems = ({ words }) => {
+      words.forEach(async word => {
+        try {
+          await words2.add(word);
+        } catch (err) {
+          // TODO
+        }
+      });
+    };
+
     render() {
-      const { docs } = words;
+      const { docs } = words2;
+
       const children = docs.map(word => <WordItem key={word.id} word={word} />);
-      const { isLoading } = words;
+      const { isLoading } = words2;
 
       return (
         <div style={styles.container}>
+          <Button style={styles.add} onClick={this.onPressAdd}>
+            Click me
+          </Button>
           <div style={styles.content} className="mobile-margins">
             {children}
           </div>

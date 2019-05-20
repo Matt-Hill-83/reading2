@@ -68,9 +68,6 @@ const argumentStory = ({ you, activeScene, sceneOptionA, sceneOptionB }) => {
     return [];
   }
 
-  // console.log("activeScene", activeScene); // zzz
-  // console.log("activeScene.location", activeScene.location); // zzz
-
   return [
     `You go on your ${you.vehicle} to the ${activeScene &&
       activeScene.location}.`,
