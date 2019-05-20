@@ -17,6 +17,21 @@ export default class Utils {
     });
   };
 
+  static getWordsByFamily = ({ words, family }) => {
+    if (!family) {
+      return;
+    }
+    console.log("family", family); // zzz
+
+    return words.filter(word => {
+      if (word.data) {
+        return word.data.family === family;
+      }
+
+      return word.family === family;
+    });
+  };
+
   static getWordsByFavorite = ({ words }) => {
     return words.filter(word => {
       if (word.data) {

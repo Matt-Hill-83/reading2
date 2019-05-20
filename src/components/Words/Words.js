@@ -1,3 +1,5 @@
+// This is a test file that I used to seed the database.
+
 import React, { Component } from "react";
 import { observer } from "mobx-react";
 
@@ -50,15 +52,21 @@ const Words = observer(
     };
 
     onPressAdd = () => {
+      // return;
       const test = words.words.slice(0, 5);
-      this.addItems({ words: test });
+      this.addItems({ words: words.words });
+      // this.addItems({ words: test });
     };
 
     addItems = ({ words }) => {
       words.forEach(async word => {
+        console.log("word", word); // zzz
+
         try {
           await words2.add(word);
         } catch (err) {
+          console.log("err", err); // zzz
+
           // TODO
         }
       });
@@ -73,7 +81,7 @@ const Words = observer(
       return (
         <div style={styles.container}>
           <Button style={styles.add} onClick={this.onPressAdd}>
-            Click me
+            Load Data to DataBase
           </Button>
           <div style={styles.content} className="mobile-margins">
             {children}

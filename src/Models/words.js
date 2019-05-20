@@ -10,6 +10,15 @@ const wordTypes = {
   creature: "creature"
 };
 
+const wordFamilies = {
+  cow: "cow",
+  cat: "cat",
+  pig: "pig",
+  bug: "bug",
+  snake: "snake",
+  mad: "mad"
+};
+
 const animals = [
   { name: "cat", image: "noun", type: wordTypes.animal },
   { name: "rat", image: "noun", type: wordTypes.animal },
@@ -110,7 +119,7 @@ const locations = [
 ];
 
 const garments = [
-  { name: "hat", image: "noun", type: wordTypes.garment },
+  { name: "hat", image: "noun", type: wordTypes.garment, family: "cat" },
   { name: "bow", image: "noun", type: wordTypes.garment },
   { name: "pants", image: "noun", type: wordTypes.garment },
   { name: "gloves", image: "noun", type: wordTypes.garment },
@@ -141,21 +150,87 @@ const vehicles = [
   // { name: "helicopter", image: "noun", type: wordTypes.vehicle }
 ];
 
+const familyCow = [
+  { family: "cow", name: "cow", image: "noun", type: wordTypes.animal },
+  { family: "cow", name: "now", image: "noun", type: "" },
+  { family: "cow", name: "how", image: "noun", type: "" },
+  { family: "cow", name: "plow", image: "noun", type: "" }
+];
+
+const familyCat = [
+  { family: "cat", name: "cat", image: "noun", type: wordTypes.animal },
+  { family: "cat", name: "bat", image: "noun", type: wordTypes.animal },
+  // { family: "cat", name: "hat", image: "noun", type: '' },
+  { family: "cat", name: "sat", image: "noun", type: "" },
+  { family: "cat", name: "mat", image: "noun", type: "" },
+  { family: "cat", name: "pat", image: "noun", type: "" },
+  { family: "cat", name: "flat", image: "noun", type: "" },
+  { family: "cat", name: "fat", image: "noun", type: "" },
+  { family: "cat", name: "that", image: "noun", type: "" },
+  { family: "cat", name: "splat", image: "noun", type: "" },
+  { family: "cat", name: "at", image: "noun", type: "" },
+  { family: "cat", name: "chat", image: "noun", type: "" }
+];
+
+const familyPig = [
+  { family: "pig", name: "pig", image: "noun", type: wordTypes.animal },
+  { family: "pig", name: "big", image: "noun", type: "" },
+  { family: "pig", name: "twig", image: "noun", type: "" }
+];
+
+const familyBug = [
+  { family: "bug", name: "bug", image: "noun", type: wordTypes.animal },
+  { family: "bug", name: "pug", image: "noun", type: wordTypes.animal },
+  { family: "bug", name: "hug", image: "noun", type: "" },
+  { family: "bug", name: "rug", image: "noun", type: "" },
+  { family: "bug", name: "tug", image: "noun", type: "" },
+  { family: "bug", name: "mug", image: "noun", type: "" },
+  { family: "bug", name: "jug", image: "noun", type: "" },
+  { family: "bug", name: "twig", image: "noun", type: "" }
+];
+
+const familySnake = [
+  { family: "snake", name: "snake", image: "noun", type: wordTypes.animal },
+  { family: "snake", name: "lake", image: "noun", type: "" },
+  { family: "snake", name: "rake", image: "noun", type: "" },
+  { family: "snake", name: "bake", image: "noun", type: "" },
+  { family: "snake", name: "take", image: "noun", type: "" },
+  { family: "snake", name: "wake", image: "noun", type: "" },
+  { family: "snake", name: "cake", image: "noun", type: "" },
+  { family: "snake", name: "fake", image: "noun", type: "" }
+];
+
+const familyMad = [
+  { family: "mad", name: "sad", image: "noun", type: "" },
+  { family: "mad", name: "mad", image: "noun", type: "" },
+  { family: "mad", name: "had", image: "noun", type: "" },
+  { family: "mad", name: "bad", image: "noun", type: "" },
+  { family: "mad", name: "glad", image: "noun", type: "" }
+];
+
 const words = [
-  ...animals,
-  ...actions,
-  ...names,
-  ...emotions,
-  ...locations,
-  ...garments,
-  ...foods,
-  ...vehicles,
-  ...creatures,
-  ...other,
-  ...colors
+  // ...animals,
+  // ...actions,
+  // ...names,
+  // ...emotions,
+  // ...locations,
+  // ...garments,
+  // ...foods,
+  // ...vehicles,
+  // ...creatures,
+  // ...other,
+  // ...colors,
+  // ...familyCow,
+  // ...familyCat,
+  // ...familyPig,
+  // ...familyBug,
+  // ...familySnake,
+  // ...familyMad
 ];
 
 export default {
+  // These words have been added to the database, but are preserved here as backup.
   words,
-  wordTypes
+  wordTypes,
+  wordFamilies
 };

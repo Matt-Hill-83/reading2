@@ -25,7 +25,8 @@ class Word extends Document {
         isFavorite: "boolean?",
         name: "string?",
         type: "string?",
-        image: "string?"
+        image: "string?",
+        family: "string?"
       })
     });
   }
