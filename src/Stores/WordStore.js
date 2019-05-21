@@ -11,9 +11,6 @@ firebase.initializeApp({
   // storageBucket: "happy-reader-4.appspot.com"
 });
 
-const firestore = firebase.firestore();
-firestore.settings({ timestampsInSnapshots: true });
-
 initFirestorter({ firebase: firebase });
 
 class Word extends Document {
@@ -31,6 +28,7 @@ class Word extends Document {
     });
   }
 }
+console.log("word store"); // zzz
 
 const words2 = new Collection("words", {
   DocumentClass: Word

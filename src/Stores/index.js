@@ -1,7 +1,12 @@
-import { WordsStore } from "./WordsStore";
+// not currently used
+
+// import { UserConfigStore } from "./UserConfigStore";
+import { UserConfigStore } from "./UserConfigStore";
+
+console.log("UserConfigStore", UserConfigStore); // zzz
 
 const stores = {
-  WordsStore
+  UserConfigStore
 };
 
 module.exports = stores;
