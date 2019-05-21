@@ -52,21 +52,14 @@ const Words = observer(
     };
 
     onPressAdd = () => {
-      // return;
-      const test = words.words.slice(0, 5);
       this.addItems({ words: words.words });
-      // this.addItems({ words: test });
     };
 
     addItems = ({ words }) => {
       words.forEach(async word => {
-        console.log("word", word); // zzz
-
         try {
           await words2.add(word);
         } catch (err) {
-          console.log("err", err); // zzz
-
           // TODO
         }
       });

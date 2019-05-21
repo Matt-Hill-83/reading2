@@ -75,8 +75,6 @@ class FlashCards extends React.Component {
     });
 
     const renderedPanels2 = Object.keys(wordFamilies).map((family, i) => {
-      console.log("wordFamilies", wordFamilies); // zzz
-
       const wordsNoFavorites = Utils.removeFavorites(
         Utils.getWordsByFamily({ words, family })
       );

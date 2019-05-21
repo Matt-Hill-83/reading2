@@ -5,9 +5,9 @@ import { useCookies } from "react-cookie";
 
 import MainStory from "./components/MainStory/MainStory";
 import "./App.module.scss";
-import { UserConfigStore } from "./Stores/UserConfigStore";
 
-// import { userConfig } from "./Stores/UserConfigStore";
+// import this last
+import { UserConfigStore } from "./Stores/UserConfigStore";
 
 function App() {
   const muiTheme = getMuiTheme();
@@ -20,7 +20,7 @@ function App() {
   }
   // setCookie("name", newName, { path: "/" });
 
-  // console.log("UserConfigStore", UserConfigStore); // zzz
+  console.log("UserConfigStore", UserConfigStore); // zzz
 
   return (
     <MuiThemeProvider muiTheme={muiTheme}>

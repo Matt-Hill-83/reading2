@@ -1,4 +1,3 @@
-// import "@firebase/firestore";
 import { Collection, Document } from "firestorter";
 import { struct } from "superstruct";
 
@@ -7,12 +6,7 @@ class UserConfig extends Document {
     super(source, {
       ...(options || {}),
       schema: struct({
-        text: "string?",
-        isFavorite: "boolean?",
-        name: "string?",
-        type: "string?",
-        image: "string?",
-        family: "string?"
+        user: "string?"
       })
     });
   }

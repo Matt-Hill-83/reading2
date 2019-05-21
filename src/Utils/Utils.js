@@ -21,7 +21,6 @@ export default class Utils {
     if (!family) {
       return;
     }
-    console.log("family", family); // zzz
 
     return words.filter(word => {
       if (word.data) {
