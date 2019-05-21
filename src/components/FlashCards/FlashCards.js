@@ -9,7 +9,6 @@ import Utils from "../../Utils/Utils.js";
 import css from "./FlashCards.module.css";
 
 import { words2 } from "../../Stores/WordStore";
-import { toJS } from "mobx";
 const { wordTypes, wordFamilies } = myWords;
 const words = words2.docs;
 

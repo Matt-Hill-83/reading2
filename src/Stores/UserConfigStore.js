@@ -12,8 +12,13 @@ class UserConfig extends Document {
   }
 }
 
-const UserConfigStore = new Collection("userConfig", {
+// const UserConfigStore = new Collection("userConfig", {
+//   DocumentClass: UserConfig
+// });
+
+const UserConfigStore = new Collection("cats", {
   DocumentClass: UserConfig
 });
+console.log("UserConfigStore", UserConfigStore); // zzz
 
 export { UserConfigStore };

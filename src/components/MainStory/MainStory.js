@@ -10,8 +10,10 @@ import FlashCards from "../FlashCards/FlashCards";
 import PicturePage from "../PicturePage/PicturePage";
 import Utils from "../../Utils/Utils.js";
 import WordPage from "../WordPage/WordPage.js";
-
 import css from "./MainStory.module.scss";
+
+import { UserConfigStore } from "../../Stores/UserConfigStore.js";
+import { words2 } from "../../Stores/WordStore.js";
 
 const { plot } = mySentences;
 const { wordTypes } = myWords;
@@ -106,8 +108,16 @@ class MainStory extends React.Component {
       story
     };
 
+    console.log("UserConfigStore.docs", UserConfigStore.docs.length); // zzz
+    console.log("words2", words2.docs.length); // zzz
+
     return (
       <div className={css.main}>
+        {/* todo - fix this */}
+        {/* todo - fix this */}
+        {/* todo - fix this */}
+        {/* todo - fix this */}
+        {/* <span>{UserConfigStore.docs[0]}</span> */}
         {this.renderHeader()}
         <audio src={this.state.sound} autoPlay />
 

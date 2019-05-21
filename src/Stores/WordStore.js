@@ -21,4 +21,6 @@ const words2 = new Collection("words", {
   DocumentClass: Word
 });
 
+console.log("words2", words2); // zzz
+
 export { words2 };
