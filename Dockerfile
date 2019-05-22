@@ -1,9 +1,9 @@
-FROM ubuntu AS builder
+FROM node:6 AS builder
 WORKDIR /app
 COPY . .
 RUN yarn run build
 
-FROM ubuntu
+FROM node:6
 RUN yarn global add serve
 WORKDIR /app
 COPY --from=builder /app/build .
